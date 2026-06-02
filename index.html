@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campus to Career — Cohort 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#07070C;
+  --surface:#0F0F17;
+  --surface2:#16161F;
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.12);
+  --violet:#7C6EF7;
+  --violet-soft:rgba(124,110,247,0.12);
+  --teal:#00C896;
+  --teal-soft:rgba(0,200,150,0.1);
+  --text:#EEEDF5;
+  --muted:#6E6D7A;
+  --muted2:#9D9BAA;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Satoshi',sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:0.5px solid var(--border);position:sticky;top:0;background:rgba(7,7,12,0.92);backdrop-filter:blur(12px);z-index:100}
+.nav-logo{font-family:'Clash Display',sans-serif;font-size:1.05rem;font-weight:600;letter-spacing:-0.01em;color:var(--text)}
+.nav-logo span{color:var(--violet)}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{font-size:0.85rem;color:var(--muted2);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--violet);color:#fff;padding:9px 20px;border-radius:8px;font-size:0.85rem;font-weight:500;text-decoration:none;transition:opacity 0.2s}
+.nav-cta:hover{opacity:0.88}
+
+/* ── HERO ── */
+.hero{padding:7rem 2rem 5rem;text-align:center;max-width:860px;margin:0 auto}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--violet-soft);border:0.5px solid rgba(124,110,247,0.3);border-radius:100px;padding:5px 14px;font-size:12px;color:#A89FFF;font-weight:500;margin-bottom:2rem;letter-spacing:0.04em;text-transform:uppercase}
+.pulse{width:6px;height:6px;background:var(--violet);border-radius:50%;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+h1{font-family:'Clash Display',sans-serif;font-size:clamp(2.8rem,6.5vw,5.2rem);font-weight:700;line-height:1.02;letter-spacing:-0.035em;margin-bottom:1.5rem}
+h1 em{font-style:normal;color:var(--violet)}
+h1 .t2{color:var(--teal)}
+.hero-desc{font-size:1.1rem;color:var(--muted2);max-width:560px;margin:0 auto 2.5rem;font-weight:300;line-height:1.75}
+.hero-desc strong{color:var(--text);font-weight:500}
+
+.btn-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.btn{display:inline-block;padding:13px 26px;border-radius:9px;font-size:0.92rem;font-weight:500;text-decoration:none;transition:all 0.2s;font-family:'Satoshi',sans-serif}
+.btn-filled{background:var(--violet);color:#fff}
+.btn-filled:hover{background:#6B5EE4;transform:translateY(-1px)}
+.btn-filled.green{background:var(--teal);color:#07070C}
+.btn-filled.green:hover{background:#00B084}
+.btn-ghost{border:0.5px solid var(--border2);color:var(--text)}
+.btn-ghost:hover{background:var(--surface2)}
+
+/* ── FREE EVENT ── */
+.free-section{padding:3rem 2rem;max-width:700px;margin:0 auto}
+.free-card{background:var(--surface);border:0.5px solid rgba(0,200,150,0.25);border-radius:18px;padding:2.5rem;text-align:center}
+.free-pill{display:inline-block;background:var(--teal-soft);color:var(--teal);border-radius:100px;padding:4px 14px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1.25rem}
+.free-card h2{font-family:'Clash Display',sans-serif;font-size:1.75rem;font-weight:600;margin-bottom:0.75rem;letter-spacing:-0.02em}
+.free-card p{color:var(--muted2);font-size:0.95rem;margin-bottom:1.5rem}
+.free-date{font-family:'Clash Display',sans-serif;font-size:1.6rem;font-weight:700;color:var(--teal);margin-bottom:1.5rem}
+.tg-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.tg-link{display:inline-flex;align-items:center;gap:8px;background:var(--surface2);border:0.5px solid var(--border);border-radius:8px;padding:10px 16px;color:var(--text);text-decoration:none;font-size:13px;font-weight:500;transition:all 0.2s}
+.tg-link:hover{border-color:var(--border2);background:rgba(255,255,255,0.05)}
+.tg-dot{width:22px;height:22px;background:#2CA5E0;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
+
+/* ── SECTIONS ── */
+.section{padding:5rem 2rem;max-width:1060px;margin:0 auto}
+.section-tag{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--violet);margin-bottom:0.75rem}
+.section-tag.teal{color:var(--teal)}
+h2.sh{font-family:'Clash Display',sans-serif;font-size:clamp(1.9rem,4vw,2.8rem);font-weight:600;letter-spacing:-0.025em;margin-bottom:0.6rem}
+.section-sub{color:var(--muted2);font-size:1rem;max-width:500px;margin-bottom:2.75rem}
+hr.div{border:none;border-top:0.5px solid var(--border);max-width:1060px;margin:0 auto}
+
+/* ── COHORT CARDS ── */
+.cohort-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+.ccard{background:var(--surface);border:0.5px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;transition:border-color 0.25s}
+.ccard:hover{border-color:var(--border2)}
+.ccard-top{height:3px;width:100%;position:absolute;top:0;left:0}
+.ccard.v .ccard-top{background:var(--violet)}
+.ccard.t .ccard-top{background:var(--teal)}
+.ccard h3{font-family:'Clash Display',sans-serif;font-size:1.2rem;font-weight:600;margin-bottom:0.35rem;letter-spacing:-0.01em}
+.ccard .desc{color:var(--muted2);font-size:0.88rem;margin-bottom:1.5rem}
+.price{font-family:'Clash Display',sans-serif;font-size:2.4rem;font-weight:700;line-height:1;margin-bottom:0.3rem}
+.ccard.v .price{color:#A89FFF}
+.ccard.t .price{color:var(--teal)}
+.per{font-size:0.82rem;color:var(--muted);margin-bottom:1.5rem}
+.features{list-style:none}
+.features li{display:flex;align-items:flex-start;gap:9px;font-size:0.86rem;color:var(--muted2);padding:5px 0;border-bottom:0.5px solid var(--border)}
+.features li:last-child{border-bottom:none}
+.check{flex-shrink:0;font-size:12px;margin-top:2px}
+.ccard.v .check{color:var(--violet)}
+.ccard.t .check{color:var(--teal)}
+.ccard-btn{display:block;text-align:center;margin-top:1.5rem;padding:12px;border-radius:9px;font-size:0.88rem;font-weight:600;text-decoration:none;transition:opacity 0.2s}
+.ccard.v .ccard-btn{background:rgba(124,110,247,0.12);color:#A89FFF}
+.ccard.v .ccard-btn:hover{background:rgba(124,110,247,0.2)}
+.ccard.t .ccard-btn{background:var(--teal-soft);color:var(--teal)}
+.ccard.t .ccard-btn:hover{background:rgba(0,200,150,0.18)}
+
+/* ── MENTORS ── */
+.mentor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.25rem}
+.mcard{background:var(--surface);border:0.5px solid var(--border);border-radius:16px;padding:1.75rem;transition:border-color 0.2s}
+.mcard:hover{border-color:var(--border2)}
+.mavatar{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Clash Display',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:1rem}
+.av1{background:#4A43C8}
+.av2{background:#8B3A6D}
+.av3{background:#0A7A5E}
+.mname{font-family:'Clash Display',sans-serif;font-size:1.05rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:3px}
+.mrole{font-size:0.8rem;color:var(--teal);font-weight:500;margin-bottom:1.1rem}
+.mstory{list-style:none;margin-bottom:1rem}
+.mstory li{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:0.5px solid var(--border);font-size:0.83rem}
+.mstory li:last-child{border-bottom:none}
+.mdot{width:7px;height:7px;border-radius:50%;margin-top:4px;flex-shrink:0}
+.mdot.v{background:var(--violet)}
+.mdot.t{background:var(--teal)}
+.mdot.c{background:#E2634A}
+.mco{font-weight:600;color:var(--text);display:block;line-height:1.3}
+.mdet{color:var(--muted2);display:block;line-height:1.4}
+.mtags{display:flex;flex-wrap:wrap;gap:6px;margin-top:0.75rem}
+.mtag{background:var(--surface2);border:0.5px solid var(--border);border-radius:6px;padding:3px 10px;font-size:11px;font-weight:500;color:var(--muted2)}
+.mtag.v{background:rgba(124,110,247,0.1);color:#A89FFF;border-color:rgba(124,110,247,0.2)}
+.mtag.t{background:var(--teal-soft);color:var(--teal);border-color:rgba(0,200,150,0.2)}
+
+/* ── HIGHLIGHT QUOTE ── */
+.quote-block{background:var(--surface);border-left:2px solid var(--teal);border-radius:0 12px 12px 0;padding:1rem 1.25rem;margin:0.5rem 0;font-size:0.85rem;color:var(--muted2);font-style:italic}
+.quote-block strong{color:var(--teal);font-style:normal}
+
+/* ── SYLLABUS ── */
+.syl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.syl-card{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:1.25rem}
+.syl-head{font-size:0.88rem;font-weight:600;margin-bottom:0.75rem;color:var(--text);display:flex;align-items:center;gap:7px}
+.syl-head span{font-size:16px}
+.syl-list{list-style:none}
+.syl-list li{font-size:0.78rem;color:var(--muted2);padding:3px 0;border-bottom:0.5px solid rgba(255,255,255,0.04)}
+.syl-list li:last-child{border-bottom:none}
+.phase-label{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;padding:3px 10px;border-radius:6px;margin-bottom:1rem}
+.phase-label.v{background:var(--violet-soft);color:#A89FFF}
+.phase-label.t{background:var(--teal-soft);color:var(--teal)}
+
+/* ── FOOTER ── */
+footer{border-top:0.5px solid var(--border);padding:2.5rem 2rem;text-align:center;color:var(--muted);font-size:0.82rem}
+footer strong{color:var(--muted2)}
+
+@media(max-width:640px){
+  nav .nav-links{display:none}
+  h1{font-size:2.4rem}
+  .hero{padding:5rem 1.25rem 3rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Campus<span>.</span>Career</div>
+  <ul class="nav-links">
+    <li><a href="#cohorts">Cohorts</a></li>
+    <li><a href="#mentors">Mentors</a></li>
+    <li><a href="#syllabus">Syllabus</a></li>
+  </ul>
+  <a href="https://t.me/DsaAndWebd" class="nav-cta" target="_blank">Join Now</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow"><span class="pulse"></span>Cohort 1 · Now Open</div>
+  <h1>From Campus<br>to <em>Internship</em> &amp;<br><span class="t2">FTE Ready</span></h1>
+  <p class="hero-desc">Learn DSA, Web Development &amp; GenAI from <strong>seniors who've already cracked it</strong> — Goldman Sachs, Guidewire, Oxane. Real roadmap. No fluff.</p>
+  <div class="btn-row">
+    <a href="https://t.me/DsaAndWebd" class="btn btn-filled" target="_blank">DSA &amp; WebDev — ₹369</a>
+    <a href="https://t.me/GenAiCohort" class="btn btn-filled green" target="_blank">GenAI Cohort — ₹799</a>
+  </div>
+</div>
+
+<!-- FREE SESSION -->
+<div class="free-section">
+  <div class="free-card">
+    <div class="free-pill">100% Free</div>
+    <h2>Live Roadmap Session</h2>
+    <p>Join us for a free live session — complete roadmap walkthrough, what to learn, in what order, and how to get your first internship. No commitment needed.</p>
+    <div class="free-date">17 June 2025</div>
+    <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1.25rem">Join the Telegram group to get the session link</p>
+    <div class="tg-row">
+      <a href="https://t.me/DsaAndWebd" class="tg-link" target="_blank">
+        <span class="tg-dot">T</span> DSA &amp; WebDev Group
+      </a>
+      <a href="https://t.me/GenAiCohort" class="tg-link" target="_blank">
+        <span class="tg-dot">T</span> GenAI Group
+      </a>
+    </div>
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- COHORTS -->
+<div class="section" id="cohorts">
+  <div class="section-tag">Cohorts</div>
+  <h2 class="sh">Pick your track</h2>
+  <p class="section-sub">Two focused cohorts. Industry mentors. Outcomes that matter — not just certificates.</p>
+  <div class="cohort-grid">
+    <div class="ccard v">
+      <div class="ccard-top"></div>
+      <h3>DSA &amp; Web Development</h3>
+      <p class="desc">Core skills every SDE interview tests — from arrays to full-stack deployed apps.</p>
+      <div class="price">₹369</div>
+      <p class="per">one-time · full cohort access</p>
+      <ul class="features">
+        <li><span class="check">✓</span>Complete DSA roadmap (arrays → graphs → DP)</li>
+        <li><span class="check">✓</span>HTML, CSS, JavaScript, TypeScript</li>
+        <li><span class="check">✓</span>React + Node.js + Next.js (MERN Stack)</li>
+        <li><span class="check">✓</span>Production-grade projects for your portfolio</li>
+        <li><span class="check">✓</span>Resume review &amp; LinkedIn guidance</li>
+        <li><span class="check">✓</span>Weekly coding contests</li>
+        <li><span class="check">✓</span>Private Telegram community</li>
+      </ul>
+      <a href="https://t.me/DsaAndWebd" class="ccard-btn" target="_blank">Join DSA &amp; WebDev →</a>
+    </div>
+    <div class="ccard t">
+      <div class="ccard-top"></div>
+      <h3>GenAI Engineering</h3>
+      <p class="desc">Build real AI products — RAG systems, agents, LLM-powered apps from scratch.</p>
+      <div class="price">₹799</div>
+      <p class="per">one-time · full cohort access</p>
+      <ul class="features">
+        <li><span class="check">✓</span>Transformers, LLMs &amp; how they work</li>
+        <li><span class="check">✓</span>OpenAI, Claude, Gemini API calls</li>
+        <li><span class="check">✓</span>Prompt engineering (zero-shot → ReAct)</li>
+        <li><span class="check">✓</span>RAG architecture + vector search (Qdrant)</li>
+        <li><span class="check">✓</span>Agentic workflows (Inngest AgentKit)</li>
+        <li><span class="check">✓</span>Build: NotebookLM clone, AI code reviewer</li>
+        <li><span class="check">✓</span>Private Telegram community</li>
+      </ul>
+      <a href="https://t.me/GenAiCohort" class="ccard-btn" target="_blank">Join GenAI Cohort →</a>
+    </div>
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- MENTORS -->
+<div class="section" id="mentors">
+  <div class="section-tag teal">Meet the instructors</div>
+  <h2 class="sh">Learn from people who've done it</h2>
+  <p class="section-sub">Not generic instructors — seniors who recently went through internship and placement processes themselves.</p>
+
+  <div class="mentor-grid">
+
+    <!-- ANSH -->
+    <div class="mcard">
+      <div class="mavatar av1">AA</div>
+      <div class="mname">Ansh Agrawal</div>
+      <div class="mrole">Software Engineering Intern · Oxane Partners</div>
+      <ul class="mstory">
+        <li>
+          <span class="mdot c"></span>
+          <span><span class="mco">Hestabit Technologies</span><span class="mdet">AI/LLM Engineering Intern — built production GenAI systems</span></span>
+        </li>
+        <li>
+          <span class="mdot t"></span>
+          <span><span class="mco">Oxane Partners</span><span class="mdet">Current Software Engineering Intern</span></span>
+        </li>
+        <li>
+          <span class="mdot v"></span>
+          <span><span class="mco">Sarvam AI — ₹1.5 Lakh Funding</span><span class="mdet">Received ₹1.5 lakh funding from Sarvam AI for an independent project — one of the few student builders selected</span></span>
+        </li>
+        <li>
+          <span class="mdot t"></span>
+          <span><span class="mco">500+ DSA problems solved</span><span class="mdet">MERN Stack · GenAI · LLM · Next.js</span></span>
+        </li>
+      </ul>
+      <div class="mtags">
+        <span class="mtag v">GenAI &amp; LLMs</span>
+        <span class="mtag t">Web Development</span>
+        <span class="mtag">DSA</span>
+      </div>
+    </div>
+
+    <!-- VIDHI -->
+    <div class="mcard">
+      <div class="mavatar av2">VA</div>
+      <div class="mname">Vidhi Ajmera</div>
+      <div class="mrole">Intern · Guidewire Software</div>
+      <ul class="mstory">
+        <li>
+          <span class="mdot c"></span>
+          <span><span class="mco">IISER Bhopal</span><span class="mdet">Research Intern — "Unpaid, but cracking it was everything"</span></span>
+        </li>
+        <li>
+          <span class="mdot t"></span>
+          <span><span class="mco">Meridian Solutions</span><span class="mdet">On-campus intern — 1 of 15 selected from the entire campus</span></span>
+        </li>
+        <li>
+          <span class="mdot v"></span>
+          <span><span class="mco">Goldman Sachs · 19.5 LPA</span><span class="mdet">"I read the offer as 1.95 LPA. It was 19.5 LPA."</span></span>
+        </li>
+        <li>
+          <span class="mdot t"></span>
+          <span><span class="mco">Hestabit → Guidewire</span><span class="mdet">Took FTE at Hestabit · Left for Guidewire to keep learning — zero regrets</span></span>
+        </li>
+      </ul>
+      <div class="mtags">
+        <span class="mtag v">DSA</span>
+        <span class="mtag t">GenAI</span>
+        <span class="mtag">Placements</span>
+      </div>
+    </div>
+
+    <!-- KRISHANVEER -->
+    <div class="mcard">
+      <div class="mavatar av3">KS</div>
+      <div class="mname">Krishanveer Singh</div>
+      <div class="mrole">Software Engineer · Oxane Partners</div>
+      <ul class="mstory">
+        <li>
+          <span class="mdot t"></span>
+          <span><span class="mco">Oxane Partners</span><span class="mdet">Full-time Software Engineer — working on production-scale systems</span></span>
+        </li>
+        <li>
+          <span class="mdot v"></span>
+          <span><span class="mco">Full Stack Development</span><span class="mdet">Deep expertise in DSA, modern web architecture &amp; system design</span></span>
+        </li>
+      </ul>
+      <div class="mtags">
+        <span class="mtag v">DSA</span>
+        <span class="mtag t">Web Development</span>
+        <span class="mtag">System Design</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- SYLLABUS -->
+<div class="section" id="syllabus">
+  <div class="section-tag">Curriculum</div>
+  <h2 class="sh">Everything you need. Nothing you don't.</h2>
+  <p class="section-sub">Built from real interview &amp; internship experience, not recycled YouTube playlists.</p>
+
+  <!-- DSA + WebDev -->
+  <span class="phase-label v">DSA &amp; Web Development — ₹369</span>
+  <div class="syl-grid" style="margin-bottom:2.5rem">
+    <div class="syl-card">
+      <div class="syl-head"><span>🧮</span>Data Structures</div>
+      <ul class="syl-list">
+        <li>Arrays, strings, two pointers</li>
+        <li>Sliding window &amp; prefix sums</li>
+        <li>Linked lists (fast-slow, reversal)</li>
+        <li>Stacks &amp; monotonic stacks</li>
+        <li>Queues &amp; deques</li>
+      </ul>
+    </div>
+    <div class="syl-card">
+      <div class="syl-head"><span>🌲</span>Trees &amp; Graphs</div>
+      <ul class="syl-list">
+        <li>Binary trees, BST</li>
+        <li>BFS / DFS traversals</li>
+        <li>Graph algorithms</li>
+        <li>Dijkstra, topological sort</li>
+        <li>Union-Find</li>
+      </ul>
+    </div>
+    <div class="syl-card">
+      <div class="syl-head"><span>⚡</span>Dynamic Programming</div>
+      <ul class="syl-list">
+        <li>1D &amp; 2D DP patterns</li>
+        <li>Knapsack variants</li>
+        <li>LCS, LIS, edit distance</li>
+        <li>DP on trees</li>
+        <li>Bitmask DP</li>
+      </ul>
+    </div>
+    <div class="syl-card">
+      <div class="syl-head"><span>🌐</span>Web Foundations</div>
+      <ul class="syl-list">
+        <li>HTML5, CSS3, Flexbox, Grid</li>
+        <li>JavaScript ES6+ deep dive</li>
+        <li>TypeScript essentials</li>
+        <li>Async JS, promises, fetch</li>
+        <li>DOM manipulation</li>
+      </ul>
+    </div>
+    <div class="syl-card">
+      <div class="syl-head"><span>⚛️</span>React &amp; Next.js</div>
+      <ul class="syl-list">
+        <li>Components, hooks, state</li>
+        <li>React Router, TanStack</li>
+        <li>SSR, SSG, ISR in Next.js</li>
+        <li>Server Actions &amp; API routes</li>
+        <li>Performance optimisation</li>
+      </ul>
+    </div>
+    <div class="syl-card">
+      <div class="syl-head"><span>🖥️</span>Backend &amp; Databases</div>
+      <ul class="syl-list">
+        <li>Node.js &amp; Express.js REST APIs</li>
+        <li>JWT auth, OAuth 2.0</li>
+        <li>MongoDB with Mongoose</li>
+        <li>PostgreSQL &amp; ORMs</li>
+        <li>WebSockets &amp; real-time</li>
+      </ul>
+    </div>
+    <div class="syl-card">
+      <div class="syl-head"><span>☁️</span>DevOps &amp; Cloud</div>
+      <ul class="syl-list">
+        <li>Docker &amp; Docker Compose</li>
+        <li>AWS EC2, CloudFront</li>
+        <li>Load balancers &amp; security groups</li>
+        <li>CI/CD pipelines</li>
+        <li>Nginx reverse proxy</li>
+      </ul>
+    </div>
+    <div class="syl-card">
+      <div class="syl-head"><span>🚀</span>Projects</div>
+      <ul class="syl-list">
+        <li>Auth microservice (OIDC, JWT)</li>
+        <li>SaaS form builder</li>
+        <li>Full-stack deployed app</li>
+        <li>Resume review session</li>
+        <li>Mock interviews</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- GenAI -->
+  <span class="phase-label t">GenAI Engineering — ₹799</span>
+  <div class="syl-grid">
+    <div class="syl-card">
+      <div class="syl-head"><span>🤖</span>Foundation</div>
+      <ul class="syl-list">
+        <li>How transformers work internally</li>
+        <li>Tokenisation, embeddings</li>
+        <li>Context windows &amp; temperature</li>
+        <li>OpenAI, Claude, Gemini APIs</li>
+        <li>Local LLMs with Ollama</li>
+      </ul>
+    </div>
+    <div class="syl-card">
+      <div class="syl-head"><span>💬</span>Prompt Engineering</div>
+      <ul class="syl-list">
+        <li>Zero-shot &amp; few-shot prompting</li>
+        <li>Chain-of-thought (CoT)</li>
+        <li>ReAct prompting</li>
+        <li>Self-consistency technique</li>
+        <li>Structured output (JSON)</li>
+      </ul>
+    </div>
+    <div class="syl-card">
+      <div class="syl-head"><span>📚</span>RAG Systems</div>
+      <ul class="syl-list">
+        <li>RAG architecture &amp; pipelines</li>
+        <li>Chunking strategies (fixed, semantic)</li>
+        <li>Qdrant vector database</li>
+        <li>Metadata filtering &amp; reranking</li>
+        <li>Document parsing (PDF, MD, HTML)</li>
+      </ul>
+    </div>
+    <div class="syl-card">
+      <div class="syl-head"><span>🧠</span>Agents</div>
+      <ul class="syl-list">
+        <li>Perceive-decide-act loop</li>
+        <li>Tool design with JSON schemas</li>
+        <li>Multi-agent handoffs</li>
+        <li>Guardrails &amp; error recovery</li>
+        <li>CLI agent from scratch</li>
+      </ul>
+    </div>
+    <div class="syl-card">
+      <div class="syl-head"><span>🔁</span>Agentic Workflows</div>
+      <ul class="syl-list">
+        <li>Inngest for orchestration</li>
+        <li>Background document processing</li>
+        <li>Async AI job queues</li>
+        <li>Observability &amp; tracing</li>
+        <li>Failure handling &amp; retries</li>
+      </ul>
+    </div>
+    <div class="syl-card">
+      <div class="syl-head"><span>💾</span>Memory Layer</div>
+      <ul class="syl-list">
+        <li>Short vs long-term memory</li>
+        <li>Episodic &amp; semantic memory</li>
+        <li>Mem0 integration</li>
+        <li>Knowledge graphs with Neo4j</li>
+        <li>Memory write, update &amp; forget</li>
+      </ul>
+    </div>
+    <div class="syl-card">
+      <div class="syl-head"><span>🛠️</span>AI Projects</div>
+      <ul class="syl-list">
+        <li>Streaming ChatGPT clone</li>
+        <li>NotebookLM clone</li>
+        <li>AI-powered code reviewer</li>
+        <li>AutoWiki for Git repos</li>
+        <li>Build your own v0.dev</li>
+      </ul>
+    </div>
+    <div class="syl-card">
+      <div class="syl-head"><span>🔍</span>Vectorless Indexing</div>
+      <ul class="syl-list">
+        <li>Where vector RAG fails</li>
+        <li>LLM-generated wiki from docs</li>
+        <li>PageIndex retrieval</li>
+        <li>Hybrid vector + vectorless</li>
+        <li>Choosing the right strategy</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- FINAL CTA -->
+<div style="padding:5rem 2rem;text-align:center;max-width:660px;margin:0 auto">
+  <div class="section-tag" style="display:block;margin-bottom:0.75rem">Get started</div>
+  <h2 class="sh" style="margin-bottom:0.75rem">Your seniors cracked it.<br>Now it's your turn.</h2>
+  <p style="color:var(--muted2);font-size:0.95rem;margin-bottom:2rem;font-weight:300">Start with the free live session on 17th June — no cost, just the roadmap. Join the Telegram group to receive the link.</p>
+  <div class="btn-row" style="margin-bottom:1.25rem">
+    <a href="https://t.me/DsaAndWebd" class="btn btn-filled" target="_blank">DSA &amp; WebDev — ₹369</a>
+    <a href="https://t.me/GenAiCohort" class="btn btn-filled green" target="_blank">GenAI — ₹799</a>
+  </div>
+  <p style="color:var(--muted);font-size:0.8rem">Free roadmap session · 17 June · Join Telegram for the link</p>
+</div>
+
+<footer>
+  <strong>Campus to Career</strong> · Cohort 1 · Built by students, for students<br>
+  <span style="display:block;margin-top:5px">Ansh Agrawal &nbsp;·&nbsp; Vidhi Ajmera &nbsp;·&nbsp; Krishanveer Singh</span>
+</footer>
+
+</body>
+</html>
