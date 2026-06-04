@@ -9,151 +9,180 @@
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#07070C;
-  --surface:#0F0F17;
-  --surface2:#16161F;
-  --border:rgba(255,255,255,0.07);
+  --surface:rgba(15,15,23,0.6);
+  --surface2:#161622;
+  --border:rgba(255,255,255,0.06);
   --border2:rgba(255,255,255,0.12);
   --violet:#7C6EF7;
-  --violet-soft:rgba(124,110,247,0.12);
+  --violet-soft:rgba(124,110,247,0.1);
   --teal:#00C896;
-  --teal-soft:rgba(0,200,150,0.1);
+  --teal-soft:rgba(0,200,150,0.08);
   --text:#EEEDF5;
   --muted:#6E6D7A;
   --muted2:#9D9BAA;
+  --glow-v:rgba(124,110,247,0.15);
+  --glow-t:rgba(0,200,150,0.15);
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Satoshi',sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:'Satoshi',sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative}
+
+/* ── GLOW ORBS ── */
+.glow-container{position:absolute;width:100%;height:100%;top:0;left:0;overflow:hidden;z-index:-1;pointer-events:none}
+.glow-orb{position:absolute;border-radius:50%;filter:blur(130px);opacity:0.12;mix-blend-mode:screen}
+.orb1{background:var(--violet);width:500px;height:500px;top:-100px;left:15%}
+.orb2{background:var(--teal);width:450px;height:450px;top:400px;right:10%}
+.orb3{background:var(--violet);width:600px;height:600px;top:1500px;left:-100px}
+.orb4{background:var(--teal);width:500px;height:500px;top:2200px;right:-100px}
 
 /* ── NAV ── */
-nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:0.5px solid var(--border);position:sticky;top:0;background:rgba(7,7,12,0.92);backdrop-filter:blur(12px);z-index:100}
-.nav-logo{font-family:'Clash Display',sans-serif;font-size:1.05rem;font-weight:600;letter-spacing:-0.01em;color:var(--text)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 3rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(7,7,12,0.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:100;transition:border-color 0.3s}
+.nav-logo{font-family:'Clash Display',sans-serif;font-size:1.25rem;font-weight:600;letter-spacing:-0.01em;color:var(--text);display:flex;align-items:center;gap:4px;text-decoration:none}
 .nav-logo span{color:var(--violet)}
-.nav-links{display:flex;gap:1.5rem;list-style:none}
-.nav-links a{font-size:0.85rem;color:var(--muted2);text-decoration:none;transition:color 0.2s}
-.nav-links a:hover{color:var(--text)}
-.nav-cta{background:var(--violet);color:#fff;padding:9px 20px;border-radius:8px;font-size:0.85rem;font-weight:500;text-decoration:none;transition:opacity 0.2s}
-.nav-cta:hover{opacity:0.88}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:0.9rem;color:var(--muted2);text-decoration:none;transition:color 0.25s,transform 0.2s;display:inline-block}
+.nav-links a:hover{color:var(--text);transform:translateY(-1px)}
+.nav-cta{background:linear-gradient(135deg, var(--violet), #6352EE);color:#fff;padding:10px 22px;border-radius:10px;font-size:0.9rem;font-weight:500;text-decoration:none;transition:all 0.3s cubic-bezier(0.16,1,0.3,1);box-shadow:0 4px 15px rgba(124,110,247,0.25)}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(124,110,247,0.4);opacity:0.95}
 
 /* ── HERO ── */
-.hero{padding:7rem 2rem 5rem;text-align:center;max-width:860px;margin:0 auto}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--violet-soft);border:0.5px solid rgba(124,110,247,0.3);border-radius:100px;padding:5px 14px;font-size:12px;color:#A89FFF;font-weight:500;margin-bottom:2rem;letter-spacing:0.04em;text-transform:uppercase}
-.pulse{width:6px;height:6px;background:var(--violet);border-radius:50%;animation:blink 2s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-h1{font-family:'Clash Display',sans-serif;font-size:clamp(2.8rem,6.5vw,5.2rem);font-weight:700;line-height:1.02;letter-spacing:-0.035em;margin-bottom:1.5rem}
-h1 em{font-style:normal;color:var(--violet)}
-h1 .t2{color:var(--teal)}
-.hero-desc{font-size:1.1rem;color:var(--muted2);max-width:560px;margin:0 auto 2.5rem;font-weight:300;line-height:1.75}
+.hero{padding:9rem 2rem 6rem;text-align:center;max-width:920px;margin:0 auto;position:relative}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--violet-soft);border:1px solid rgba(124,110,247,0.2);border-radius:100px;padding:6px 16px;font-size:12px;color:#A89FFF;font-weight:500;margin-bottom:2.5rem;letter-spacing:0.06em;text-transform:uppercase;box-shadow:0 4px 12px rgba(124,110,247,0.1)}
+.pulse{width:8px;height:8px;background:var(--violet);border-radius:50%;animation:blink 2s ease-in-out infinite;box-shadow:0 0 8px var(--violet)}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.3;transform:scale(0.85)}}
+h1{font-family:'Clash Display',sans-serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.03em;margin-bottom:1.75rem;background:linear-gradient(135deg, #FFFFFF 20%, #B8B0FF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+h1 em{font-style:normal;background:linear-gradient(135deg, #9488FF 0%, #6E5EE4 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+h1 .t2{background:linear-gradient(135deg, #00FFC0 0%, #009E77 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-desc{font-size:1.2rem;color:var(--muted2);max-width:620px;margin:0 auto 3rem;font-weight:300;line-height:1.75}
 .hero-desc strong{color:var(--text);font-weight:500}
 
-.btn-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-.btn{display:inline-block;padding:13px 26px;border-radius:9px;font-size:0.92rem;font-weight:500;text-decoration:none;transition:all 0.2s;font-family:'Satoshi',sans-serif}
-.btn-filled{background:var(--violet);color:#fff}
-.btn-filled:hover{background:#6B5EE4;transform:translateY(-1px)}
-.btn-filled.green{background:var(--teal);color:#07070C}
-.btn-filled.green:hover{background:#00B084}
-.btn-ghost{border:0.5px solid var(--border2);color:var(--text)}
-.btn-ghost:hover{background:var(--surface2)}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.btn{display:inline-block;padding:14px 28px;border-radius:10px;font-size:0.95rem;font-weight:500;text-decoration:none;transition:all 0.3s cubic-bezier(0.16,1,0.3,1);font-family:'Satoshi',sans-serif;position:relative;overflow:hidden}
+.btn-filled{background:linear-gradient(135deg, var(--violet), #6352EE);color:#fff;box-shadow:0 4px 15px rgba(124,110,247,0.25)}
+.btn-filled:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(124,110,247,0.4)}
+.btn-filled.green{background:linear-gradient(135deg, var(--teal), #00A279);color:#07070C;box-shadow:0 4px 15px rgba(0,200,150,0.2)}
+.btn-filled.green:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,200,150,0.35)}
+.btn-ghost{border:1px solid var(--border2);color:var(--text);background:rgba(255,255,255,0.02);backdrop-filter:blur(8px)}
+.btn-ghost:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.2);transform:translateY(-2px)}
 
 /* ── FREE EVENT ── */
-.free-section{padding:3rem 2rem;max-width:700px;margin:0 auto}
-.free-card{background:var(--surface);border:0.5px solid rgba(0,200,150,0.25);border-radius:18px;padding:2.5rem;text-align:center}
-.free-pill{display:inline-block;background:var(--teal-soft);color:var(--teal);border-radius:100px;padding:4px 14px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1.25rem}
-.free-card h2{font-family:'Clash Display',sans-serif;font-size:1.75rem;font-weight:600;margin-bottom:0.75rem;letter-spacing:-0.02em}
-.free-card p{color:var(--muted2);font-size:0.95rem;margin-bottom:1.5rem}
-.free-date{font-family:'Clash Display',sans-serif;font-size:1.6rem;font-weight:700;color:var(--teal);margin-bottom:1.5rem}
-.tg-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-.tg-link{display:inline-flex;align-items:center;gap:8px;background:var(--surface2);border:0.5px solid var(--border);border-radius:8px;padding:10px 16px;color:var(--text);text-decoration:none;font-size:13px;font-weight:500;transition:all 0.2s}
-.tg-link:hover{border-color:var(--border2);background:rgba(255,255,255,0.05)}
-.tg-dot{width:22px;height:22px;background:#2CA5E0;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
+.free-section{padding:4rem 2rem;max-width:800px;margin:0 auto}
+.free-card{background:rgba(15,15,23,0.45);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(0,200,150,0.2);border-radius:24px;padding:3rem;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.4),0 0 30px rgba(0,200,150,0.05);transition:transform 0.3s,border-color 0.3s}
+.free-card:hover{transform:translateY(-3px);border-color:rgba(0,200,150,0.35)}
+.free-pill{display:inline-block;background:var(--teal-soft);color:var(--teal);border:1px solid rgba(0,200,150,0.15);border-radius:100px;padding:5px 16px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1.5rem}
+.free-card h2{font-family:'Clash Display',sans-serif;font-size:2rem;font-weight:600;margin-bottom:1rem;letter-spacing:-0.02em}
+.free-card p{color:var(--muted2);font-size:1rem;margin-bottom:1.75rem;max-width:550px;margin-left:auto;margin-right:auto}
+.free-date{font-family:'Clash Display',sans-serif;font-size:2.2rem;font-weight:700;color:var(--teal);margin-bottom:1.5rem;letter-spacing:-0.01em;text-shadow:0 0 15px rgba(0,200,150,0.2)}
+.tg-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.tg-link{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:12px 20px;color:var(--text);text-decoration:none;font-size:14px;font-weight:500;transition:all 0.3s cubic-bezier(0.16,1,0.3,1)}
+.tg-link:hover{border-color:rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);transform:translateY(-2px)}
+.tg-dot{width:24px;height:24px;background:#2CA5E0;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0}
 
 /* ── SECTIONS ── */
-.section{padding:5rem 2rem;max-width:1060px;margin:0 auto}
-.section-tag{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--violet);margin-bottom:0.75rem}
+.section{padding:6rem 2rem;max-width:1120px;margin:0 auto}
+.section-tag{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--violet);margin-bottom:1rem;display:inline-block}
 .section-tag.teal{color:var(--teal)}
-h2.sh{font-family:'Clash Display',sans-serif;font-size:clamp(1.9rem,4vw,2.8rem);font-weight:600;letter-spacing:-0.025em;margin-bottom:0.6rem}
-.section-sub{color:var(--muted2);font-size:1rem;max-width:500px;margin-bottom:2.75rem}
-hr.div{border:none;border-top:0.5px solid var(--border);max-width:1060px;margin:0 auto}
+h2.sh{font-family:'Clash Display',sans-serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:600;letter-spacing:-0.02em;margin-bottom:0.75rem}
+.section-sub{color:var(--muted2);font-size:1.05rem;max-width:550px;margin-bottom:3.5rem;font-weight:300}
+hr.div{border:none;border-top:1px solid var(--border);max-width:1120px;margin:0 auto}
 
 /* ── COHORT CARDS ── */
-.cohort-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
-.ccard{background:var(--surface);border:0.5px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;transition:border-color 0.25s}
-.ccard:hover{border-color:var(--border2)}
-.ccard-top{height:3px;width:100%;position:absolute;top:0;left:0}
-.ccard.v .ccard-top{background:var(--violet)}
-.ccard.t .ccard-top{background:var(--teal)}
-.ccard h3{font-family:'Clash Display',sans-serif;font-size:1.2rem;font-weight:600;margin-bottom:0.35rem;letter-spacing:-0.01em}
-.ccard .desc{color:var(--muted2);font-size:0.88rem;margin-bottom:1.5rem}
-.price{font-family:'Clash Display',sans-serif;font-size:2.4rem;font-weight:700;line-height:1;margin-bottom:0.3rem}
-.ccard.v .price{color:#A89FFF}
-.ccard.t .price{color:var(--teal)}
-.per{font-size:0.82rem;color:var(--muted);margin-bottom:1.5rem}
+.cohort-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+.ccard{background:var(--surface);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:24px;padding:2.5rem;position:relative;overflow:hidden;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);box-shadow:0 12px 40px rgba(0,0,0,0.5)}
+.ccard:hover{border-color:rgba(255,255,255,0.15);transform:translateY(-6px)}
+.ccard.v:hover{box-shadow:0 15px 35px var(--glow-v),0 5px 15px rgba(0,0,0,0.4)}
+.ccard.t:hover{box-shadow:0 15px 35px var(--glow-t),0 5px 15px rgba(0,0,0,0.4)}
+.ccard-top{height:4px;width:100%;position:absolute;top:0;left:0}
+.ccard.v .ccard-top{background:linear-gradient(90deg, var(--violet), #9F94FF)}
+.ccard.t .ccard-top{background:linear-gradient(90deg, var(--teal), #58FFD4)}
+.ccard h3{font-family:'Clash Display',sans-serif;font-size:1.4rem;font-weight:600;margin-bottom:0.5rem;letter-spacing:-0.01em}
+.ccard .desc{color:var(--muted2);font-size:0.92rem;margin-bottom:2rem;line-height:1.6}
+.price{font-family:'Clash Display',sans-serif;font-size:2.8rem;font-weight:700;line-height:1;margin-bottom:0.5rem;letter-spacing:-0.01em}
+.price.tba{font-size:1.8rem;margin:0.5rem 0 0.8rem}
+.ccard.v .price{color:#B0A7FF;text-shadow:0 0 20px rgba(124,110,247,0.15)}
+.ccard.t .price{color:var(--teal);text-shadow:0 0 20px rgba(0,200,150,0.15)}
+.per{font-size:0.85rem;color:var(--muted);margin-bottom:2rem}
 .features{list-style:none}
-.features li{display:flex;align-items:flex-start;gap:9px;font-size:0.86rem;color:var(--muted2);padding:5px 0;border-bottom:0.5px solid var(--border)}
+.features li{display:flex;align-items:flex-start;gap:12px;font-size:0.9rem;color:var(--muted2);padding:10px 0;border-bottom:1px solid var(--border);line-height:1.5}
 .features li:last-child{border-bottom:none}
-.check{flex-shrink:0;font-size:12px;margin-top:2px}
-.ccard.v .check{color:var(--violet)}
-.ccard.t .check{color:var(--teal)}
-.ccard-btn{display:block;text-align:center;margin-top:1.5rem;padding:12px;border-radius:9px;font-size:0.88rem;font-weight:600;text-decoration:none;transition:opacity 0.2s}
-.ccard.v .ccard-btn{background:rgba(124,110,247,0.12);color:#A89FFF}
-.ccard.v .ccard-btn:hover{background:rgba(124,110,247,0.2)}
-.ccard.t .ccard-btn{background:var(--teal-soft);color:var(--teal)}
-.ccard.t .ccard-btn:hover{background:rgba(0,200,150,0.18)}
+.check-icon{flex-shrink:0;width:16px;height:16px;margin-top:3px}
+.ccard.v .check-icon{color:var(--violet)}
+.ccard.t .check-icon{color:var(--teal)}
+.ccard-btn{display:block;text-align:center;margin-top:2rem;padding:14px;border-radius:12px;font-size:0.92rem;font-weight:600;text-decoration:none;transition:all 0.3s ease;border:1px solid transparent}
+.ccard.v .ccard-btn{background:var(--violet-soft);color:#B8B0FF;border-color:rgba(124,110,247,0.1)}
+.ccard.v .ccard-btn:hover{background:var(--violet);color:#fff;box-shadow:0 6px 20px rgba(124,110,247,0.3)}
+.ccard.t .ccard-btn{background:var(--teal-soft);color:var(--teal);border-color:rgba(0,200,150,0.1)}
+.ccard.t .ccard-btn:hover{background:var(--teal);color:#07070C;box-shadow:0 6px 20px rgba(0,200,150,0.3)}
 
 /* ── MENTORS ── */
-.mentor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.25rem}
-.mcard{background:var(--surface);border:0.5px solid var(--border);border-radius:16px;padding:1.75rem;transition:border-color 0.2s}
-.mcard:hover{border-color:var(--border2)}
-.mavatar{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Clash Display',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:1rem}
-.av1{background:#4A43C8}
-.av2{background:#8B3A6D}
-.av3{background:#0A7A5E}
-.mname{font-family:'Clash Display',sans-serif;font-size:1.05rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:3px}
-.mrole{font-size:0.8rem;color:var(--teal);font-weight:500;margin-bottom:1.1rem}
-.mstory{list-style:none;margin-bottom:1rem}
-.mstory li{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:0.5px solid var(--border);font-size:0.83rem}
+.mentor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2.5rem;max-width:880px;margin:0 auto}
+.mcard{background:var(--surface);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:24px;padding:2.5rem;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);box-shadow:0 12px 40px rgba(0,0,0,0.5);display:flex;flex-direction:column}
+.mcard:hover{border-color:rgba(255,255,255,0.15);transform:translateY(-6px);box-shadow:0 15px 35px rgba(124,110,247,0.12)}
+.mavatar-container{width:90px;height:90px;border-radius:50%;margin-bottom:1.5rem;position:relative;padding:4px;background:linear-gradient(135deg, var(--violet), var(--teal));box-shadow:0 8px 24px rgba(124,110,247,0.25)}
+.mavatar-img{width:100%;height:100%;object-fit:cover;border-radius:50%;background:#0F0F17}
+.mname{font-family:'Clash Display',sans-serif;font-size:1.25rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:4px}
+.mrole{font-size:0.88rem;color:var(--teal);font-weight:500;margin-bottom:1.5rem;letter-spacing:0.01em}
+.mstory{list-style:none;margin-bottom:1.5rem;flex-grow:1}
+.mstory li{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:0.88rem;line-height:1.55}
 .mstory li:last-child{border-bottom:none}
-.mdot{width:7px;height:7px;border-radius:50%;margin-top:4px;flex-shrink:0}
-.mdot.v{background:var(--violet)}
-.mdot.t{background:var(--teal)}
-.mdot.c{background:#E2634A}
-.mco{font-weight:600;color:var(--text);display:block;line-height:1.3}
+.mdot{width:8px;height:8px;border-radius:50%;margin-top:6px;flex-shrink:0;box-shadow:0 0 6px currentColor}
+.mdot.v{background:var(--violet);color:var(--violet)}
+.mdot.t{background:var(--teal);color:var(--teal)}
+.mdot.c{background:#E2634A;color:#E2634A}
+.mco{font-weight:600;color:var(--text);display:block;line-height:1.35;margin-bottom:2px}
 .mdet{color:var(--muted2);display:block;line-height:1.4}
-.mtags{display:flex;flex-wrap:wrap;gap:6px;margin-top:0.75rem}
-.mtag{background:var(--surface2);border:0.5px solid var(--border);border-radius:6px;padding:3px 10px;font-size:11px;font-weight:500;color:var(--muted2)}
-.mtag.v{background:rgba(124,110,247,0.1);color:#A89FFF;border-color:rgba(124,110,247,0.2)}
-.mtag.t{background:var(--teal-soft);color:var(--teal);border-color:rgba(0,200,150,0.2)}
+.mtags{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.25rem}
+.mtag{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:4px 12px;font-size:12px;font-weight:500;color:var(--muted2);transition:all 0.2s}
+.mtag.v{background:var(--violet-soft);color:#B0A7FF;border-color:rgba(124,110,247,0.15)}
+.mtag.t{background:var(--teal-soft);color:var(--teal);border-color:rgba(0,200,150,0.15)}
 
-/* ── HIGHLIGHT QUOTE ── */
-.quote-block{background:var(--surface);border-left:2px solid var(--teal);border-radius:0 12px 12px 0;padding:1rem 1.25rem;margin:0.5rem 0;font-size:0.85rem;color:var(--muted2);font-style:italic}
-.quote-block strong{color:var(--teal);font-style:normal}
+/* ── INTERACTIVE SYLLABUS TABS ── */
+.syllabus-tabs{display:flex;justify-content:center;gap:0.75rem;margin-bottom:3.5rem;background:rgba(255,255,255,0.02);padding:6px;border-radius:100px;border:1px solid var(--border);width:max-content;margin-left:auto;margin-right:auto;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+.syl-tab-btn{background:transparent;border:none;color:var(--muted2);padding:12px 28px;border-radius:100px;font-family:'Clash Display',sans-serif;font-size:0.95rem;font-weight:500;cursor:pointer;transition:all 0.3s cubic-bezier(0.16,1,0.3,1)}
+.syl-tab-btn.active{background:linear-gradient(135deg, var(--violet), #6352EE);color:#fff;box-shadow:0 4px 15px rgba(124,110,247,0.3)}
+.syl-tab-btn:hover:not(.active){color:var(--text);background:rgba(255,255,255,0.04)}
+.syl-tab-content{display:none;animation:tabFadeIn 0.5s cubic-bezier(0.16,1,0.3,1) forwards}
+.syl-tab-content.active{display:block}
+@keyframes tabFadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── SYLLABUS ── */
-.syl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
-.syl-card{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:1.25rem}
-.syl-head{font-size:0.88rem;font-weight:600;margin-bottom:0.75rem;color:var(--text);display:flex;align-items:center;gap:7px}
-.syl-head span{font-size:16px}
+/* ── SYLLABUS CARDS ── */
+.syl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
+.syl-card{background:rgba(15,15,23,0.4);border:1px solid var(--border);border-radius:18px;padding:1.5rem;transition:all 0.3s ease}
+.syl-card:hover{border-color:rgba(255,255,255,0.1);transform:translateY(-2px);background:rgba(15,15,23,0.55)}
+.syl-head{font-size:0.95rem;font-weight:600;margin-bottom:1rem;color:var(--text);display:flex;align-items:center;gap:10px}
+.syl-head span{font-size:18px}
 .syl-list{list-style:none}
-.syl-list li{font-size:0.78rem;color:var(--muted2);padding:3px 0;border-bottom:0.5px solid rgba(255,255,255,0.04)}
+.syl-list li{font-size:0.82rem;color:var(--muted2);padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.03)}
 .syl-list li:last-child{border-bottom:none}
-.phase-label{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;padding:3px 10px;border-radius:6px;margin-bottom:1rem}
-.phase-label.v{background:var(--violet-soft);color:#A89FFF}
-.phase-label.t{background:var(--teal-soft);color:var(--teal)}
+.phase-label{display:inline-block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;padding:6px 14px;border-radius:8px;margin-bottom:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+.phase-label.v{background:var(--violet-soft);color:#B0A7FF;border:1px solid rgba(124,110,247,0.15)}
+.phase-label.t{background:var(--teal-soft);color:var(--teal);border:1px solid rgba(0,200,150,0.15)}
 
 /* ── FOOTER ── */
-footer{border-top:0.5px solid var(--border);padding:2.5rem 2rem;text-align:center;color:var(--muted);font-size:0.82rem}
+footer{border-top:1px solid var(--border);padding:3.5rem 2rem;text-align:center;color:var(--muted);font-size:0.88rem;background:rgba(7,7,12,0.5)}
 footer strong{color:var(--muted2)}
 
-@media(max-width:640px){
+@media(max-width:768px){
+  nav{padding:1.25rem 1.5rem}
   nav .nav-links{display:none}
-  h1{font-size:2.4rem}
-  .hero{padding:5rem 1.25rem 3rem}
+  h1{font-size:2.6rem}
+  .hero{padding:7rem 1.25rem 4rem}
+  .free-card{padding:2rem 1.25rem}
+  .syllabus-tabs{width:90%;flex-direction:column;border-radius:18px;gap:4px}
+  .syl-tab-btn{width:100%;padding:10px 16px}
 }
 </style>
 </head>
 <body>
 
+<div class="glow-container">
+  <div class="glow-orb orb1"></div>
+  <div class="glow-orb orb2"></div>
+  <div class="glow-orb orb3"></div>
+  <div class="glow-orb orb4"></div>
+</div>
+
 <nav>
-  <div class="nav-logo">Campus<span>.</span>Career</div>
+  <a href="#" class="nav-logo">Campus<span>.</span>Career</a>
   <ul class="nav-links">
     <li><a href="#cohorts">Cohorts</a></li>
     <li><a href="#mentors">Mentors</a></li>
@@ -180,7 +209,7 @@ footer strong{color:var(--muted2)}
     <h2>Live Roadmap Session</h2>
     <p>Join us for a free live session — complete roadmap walkthrough, what to learn, in what order, and how to get your first internship. No commitment needed.</p>
     <div class="free-date">17 June 2025</div>
-    <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1.25rem">Join the Telegram group to get the session link</p>
+    <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1.5rem">Join the Telegram group to get the session link</p>
     <div class="tg-row">
       <a href="https://t.me/DsaAndWebd" class="tg-link" target="_blank">
         <span class="tg-dot">T</span> DSA &amp; WebDev Group
@@ -204,16 +233,37 @@ footer strong{color:var(--muted2)}
       <div class="ccard-top"></div>
       <h3>DSA &amp; Web Development</h3>
       <p class="desc">Core skills every SDE interview tests — from arrays to full-stack deployed apps.</p>
-      <div class="price">₹369</div>
-      <p class="per">one-time · full cohort access</p>
+      <div class="price tba">To Be Announced</div>
+      <p class="per">Special cohort pricing will be decided in the live session</p>
       <ul class="features">
-        <li><span class="check">✓</span>Complete DSA roadmap (arrays → graphs → DP)</li>
-        <li><span class="check">✓</span>HTML, CSS, JavaScript, TypeScript</li>
-        <li><span class="check">✓</span>React + Node.js + Next.js (MERN Stack)</li>
-        <li><span class="check">✓</span>Production-grade projects for your portfolio</li>
-        <li><span class="check">✓</span>Resume review &amp; LinkedIn guidance</li>
-        <li><span class="check">✓</span>Weekly coding contests</li>
-        <li><span class="check">✓</span>Private Telegram community</li>
+        <li>
+          <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Complete DSA roadmap (arrays → graphs → DP)</span>
+        </li>
+        <li>
+          <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>HTML, CSS, JavaScript, TypeScript</span>
+        </li>
+        <li>
+          <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>React + Node.js + Next.js (MERN Stack)</span>
+        </li>
+        <li>
+          <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Production-grade projects for your portfolio</span>
+        </li>
+        <li>
+          <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Resume review &amp; LinkedIn guidance</span>
+        </li>
+        <li>
+          <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Weekly coding contests</span>
+        </li>
+        <li>
+          <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Private Telegram community</span>
+        </li>
       </ul>
       <a href="https://t.me/DsaAndWebd" class="ccard-btn" target="_blank">Join DSA &amp; WebDev →</a>
     </div>
@@ -221,16 +271,37 @@ footer strong{color:var(--muted2)}
       <div class="ccard-top"></div>
       <h3>GenAI Engineering</h3>
       <p class="desc">Build real AI products — RAG systems, agents, LLM-powered apps from scratch.</p>
-      <div class="price">₹799</div>
-      <p class="per">one-time · full cohort access</p>
+      <div class="price tba">To Be Announced</div>
+      <p class="per">Special cohort pricing will be decided in the live session</p>
       <ul class="features">
-        <li><span class="check">✓</span>Transformers, LLMs &amp; how they work</li>
-        <li><span class="check">✓</span>OpenAI, Claude, Gemini API calls</li>
-        <li><span class="check">✓</span>Prompt engineering (zero-shot → ReAct)</li>
-        <li><span class="check">✓</span>RAG architecture + vector search (Qdrant)</li>
-        <li><span class="check">✓</span>Agentic workflows (Inngest AgentKit)</li>
-        <li><span class="check">✓</span>Build: NotebookLM clone, AI code reviewer</li>
-        <li><span class="check">✓</span>Private Telegram community</li>
+        <li>
+          <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Transformers, LLMs &amp; how they work</span>
+        </li>
+        <li>
+          <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>OpenAI, Claude, Gemini API calls</span>
+        </li>
+        <li>
+          <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Prompt engineering (zero-shot → ReAct)</span>
+        </li>
+        <li>
+          <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>RAG architecture + vector search (Qdrant)</span>
+        </li>
+        <li>
+          <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Agentic workflows (Inngest AgentKit)</span>
+        </li>
+        <li>
+          <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Build: NotebookLM clone, AI code reviewer</span>
+        </li>
+        <li>
+          <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Private Telegram community</span>
+        </li>
       </ul>
       <a href="https://t.me/GenAiCohort" class="ccard-btn" target="_blank">Join GenAI Cohort →</a>
     </div>
@@ -249,7 +320,9 @@ footer strong{color:var(--muted2)}
 
     <!-- ANSH -->
     <div class="mcard">
-      <div class="mavatar av1">AA</div>
+      <div class="mavatar-container">
+        <img src="ansh_avatar.png" alt="Ansh Agrawal" class="mavatar-img">
+      </div>
       <div class="mname">Ansh Agrawal</div>
       <div class="mrole">Software Engineering Intern · Oxane Partners</div>
       <ul class="mstory">
@@ -279,7 +352,9 @@ footer strong{color:var(--muted2)}
 
     <!-- VIDHI -->
     <div class="mcard">
-      <div class="mavatar av2">VA</div>
+      <div class="mavatar-container">
+        <img src="vidhi_avatar.png" alt="Vidhi Ajmera" class="mavatar-img">
+      </div>
       <div class="mname">Vidhi Ajmera</div>
       <div class="mrole">Intern · Guidewire Software</div>
       <ul class="mstory">
@@ -307,28 +382,6 @@ footer strong{color:var(--muted2)}
       </div>
     </div>
 
-    <!-- KRISHANVEER -->
-    <div class="mcard">
-      <div class="mavatar av3">KS</div>
-      <div class="mname">Krishanveer Singh</div>
-      <div class="mrole">Software Engineer · Oxane Partners</div>
-      <ul class="mstory">
-        <li>
-          <span class="mdot t"></span>
-          <span><span class="mco">Oxane Partners</span><span class="mdet">Full-time Software Engineer — working on production-scale systems</span></span>
-        </li>
-        <li>
-          <span class="mdot v"></span>
-          <span><span class="mco">Full Stack Development</span><span class="mdet">Deep expertise in DSA, modern web architecture &amp; system design</span></span>
-        </li>
-      </ul>
-      <div class="mtags">
-        <span class="mtag v">DSA</span>
-        <span class="mtag t">Web Development</span>
-        <span class="mtag">System Design</span>
-      </div>
-    </div>
-
   </div>
 </div>
 
@@ -340,173 +393,183 @@ footer strong{color:var(--muted2)}
   <h2 class="sh">Everything you need. Nothing you don't.</h2>
   <p class="section-sub">Built from real interview &amp; internship experience, not recycled YouTube playlists.</p>
 
-  <!-- DSA + WebDev -->
-  <span class="phase-label v">DSA &amp; Web Development — ₹369</span>
-  <div class="syl-grid" style="margin-bottom:2.5rem">
-    <div class="syl-card">
-      <div class="syl-head"><span>🧮</span>Data Structures</div>
-      <ul class="syl-list">
-        <li>Arrays, strings, two pointers</li>
-        <li>Sliding window &amp; prefix sums</li>
-        <li>Linked lists (fast-slow, reversal)</li>
-        <li>Stacks &amp; monotonic stacks</li>
-        <li>Queues &amp; deques</li>
-      </ul>
-    </div>
-    <div class="syl-card">
-      <div class="syl-head"><span>🌲</span>Trees &amp; Graphs</div>
-      <ul class="syl-list">
-        <li>Binary trees, BST</li>
-        <li>BFS / DFS traversals</li>
-        <li>Graph algorithms</li>
-        <li>Dijkstra, topological sort</li>
-        <li>Union-Find</li>
-      </ul>
-    </div>
-    <div class="syl-card">
-      <div class="syl-head"><span>⚡</span>Dynamic Programming</div>
-      <ul class="syl-list">
-        <li>1D &amp; 2D DP patterns</li>
-        <li>Knapsack variants</li>
-        <li>LCS, LIS, edit distance</li>
-        <li>DP on trees</li>
-        <li>Bitmask DP</li>
-      </ul>
-    </div>
-    <div class="syl-card">
-      <div class="syl-head"><span>🌐</span>Web Foundations</div>
-      <ul class="syl-list">
-        <li>HTML5, CSS3, Flexbox, Grid</li>
-        <li>JavaScript ES6+ deep dive</li>
-        <li>TypeScript essentials</li>
-        <li>Async JS, promises, fetch</li>
-        <li>DOM manipulation</li>
-      </ul>
-    </div>
-    <div class="syl-card">
-      <div class="syl-head"><span>⚛️</span>React &amp; Next.js</div>
-      <ul class="syl-list">
-        <li>Components, hooks, state</li>
-        <li>React Router, TanStack</li>
-        <li>SSR, SSG, ISR in Next.js</li>
-        <li>Server Actions &amp; API routes</li>
-        <li>Performance optimisation</li>
-      </ul>
-    </div>
-    <div class="syl-card">
-      <div class="syl-head"><span>🖥️</span>Backend &amp; Databases</div>
-      <ul class="syl-list">
-        <li>Node.js &amp; Express.js REST APIs</li>
-        <li>JWT auth, OAuth 2.0</li>
-        <li>MongoDB with Mongoose</li>
-        <li>PostgreSQL &amp; ORMs</li>
-        <li>WebSockets &amp; real-time</li>
-      </ul>
-    </div>
-    <div class="syl-card">
-      <div class="syl-head"><span>☁️</span>DevOps &amp; Cloud</div>
-      <ul class="syl-list">
-        <li>Docker &amp; Docker Compose</li>
-        <li>AWS EC2, CloudFront</li>
-        <li>Load balancers &amp; security groups</li>
-        <li>CI/CD pipelines</li>
-        <li>Nginx reverse proxy</li>
-      </ul>
-    </div>
-    <div class="syl-card">
-      <div class="syl-head"><span>🚀</span>Projects</div>
-      <ul class="syl-list">
-        <li>Auth microservice (OIDC, JWT)</li>
-        <li>SaaS form builder</li>
-        <li>Full-stack deployed app</li>
-        <li>Resume review session</li>
-        <li>Mock interviews</li>
-      </ul>
+  <!-- Interactive Tabs -->
+  <div class="syllabus-tabs">
+    <button class="syl-tab-btn active" data-tab="dsa-webdev">DSA &amp; Web Development</button>
+    <button class="syl-tab-btn" data-tab="genai">GenAI Engineering</button>
+  </div>
+
+  <!-- DSA + WebDev Tab Content -->
+  <div class="syl-tab-content active" id="dsa-webdev">
+    <div class="phase-label v">DSA &amp; Web Development Cohort</div>
+    <div class="syl-grid">
+      <div class="syl-card">
+        <div class="syl-head"><span>🧮</span>Data Structures</div>
+        <ul class="syl-list">
+          <li>Arrays, strings, two pointers</li>
+          <li>Sliding window &amp; prefix sums</li>
+          <li>Linked lists (fast-slow, reversal)</li>
+          <li>Stacks &amp; monotonic stacks</li>
+          <li>Queues &amp; deques</li>
+        </ul>
+      </div>
+      <div class="syl-card">
+        <div class="syl-head"><span>🌲</span>Trees &amp; Graphs</div>
+        <ul class="syl-list">
+          <li>Binary trees, BST</li>
+          <li>BFS / DFS traversals</li>
+          <li>Graph algorithms</li>
+          <li>Dijkstra, topological sort</li>
+          <li>Union-Find</li>
+        </ul>
+      </div>
+      <div class="syl-card">
+        <div class="syl-head"><span>⚡</span>Dynamic Programming</div>
+        <ul class="syl-list">
+          <li>1D &amp; 2D DP patterns</li>
+          <li>Knapsack variants</li>
+          <li>LCS, LIS, edit distance</li>
+          <li>DP on trees</li>
+          <li>Bitmask DP</li>
+        </ul>
+      </div>
+      <div class="syl-card">
+        <div class="syl-head"><span>🌐</span>Web Foundations</div>
+        <ul class="syl-list">
+          <li>HTML5, CSS3, Flexbox, Grid</li>
+          <li>JavaScript ES6+ deep dive</li>
+          <li>TypeScript essentials</li>
+          <li>Async JS, promises, fetch</li>
+          <li>DOM manipulation</li>
+        </ul>
+      </div>
+      <div class="syl-card">
+        <div class="syl-head"><span>⚛️</span>React &amp; Next.js</div>
+        <ul class="syl-list">
+          <li>Components, hooks, state</li>
+          <li>React Router, TanStack</li>
+          <li>SSR, SSG, ISR in Next.js</li>
+          <li>Server Actions &amp; API routes</li>
+          <li>Performance optimisation</li>
+        </ul>
+      </div>
+      <div class="syl-card">
+        <div class="syl-head"><span>🖥️</span>Backend &amp; Databases</div>
+        <ul class="syl-list">
+          <li>Node.js &amp; Express.js REST APIs</li>
+          <li>JWT auth, OAuth 2.0</li>
+          <li>MongoDB with Mongoose</li>
+          <li>PostgreSQL &amp; ORMs</li>
+          <li>WebSockets &amp; real-time</li>
+        </ul>
+      </div>
+      <div class="syl-card">
+        <div class="syl-head"><span>☁️</span>DevOps &amp; Cloud</div>
+        <ul class="syl-list">
+          <li>Docker &amp; Docker Compose</li>
+          <li>AWS EC2, CloudFront</li>
+          <li>Load balancers &amp; security groups</li>
+          <li>CI/CD pipelines</li>
+          <li>Nginx reverse proxy</li>
+        </ul>
+      </div>
+      <div class="syl-card">
+        <div class="syl-head"><span>🚀</span>Projects</div>
+        <ul class="syl-list">
+          <li>Auth microservice (OIDC, JWT)</li>
+          <li>SaaS form builder</li>
+          <li>Full-stack deployed app</li>
+          <li>Resume review session</li>
+          <li>Mock interviews</li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <!-- GenAI -->
-  <span class="phase-label t">GenAI Engineering — ₹799</span>
-  <div class="syl-grid">
-    <div class="syl-card">
-      <div class="syl-head"><span>🤖</span>Foundation</div>
-      <ul class="syl-list">
-        <li>How transformers work internally</li>
-        <li>Tokenisation, embeddings</li>
-        <li>Context windows &amp; temperature</li>
-        <li>OpenAI, Claude, Gemini APIs</li>
-        <li>Local LLMs with Ollama</li>
-      </ul>
-    </div>
-    <div class="syl-card">
-      <div class="syl-head"><span>💬</span>Prompt Engineering</div>
-      <ul class="syl-list">
-        <li>Zero-shot &amp; few-shot prompting</li>
-        <li>Chain-of-thought (CoT)</li>
-        <li>ReAct prompting</li>
-        <li>Self-consistency technique</li>
-        <li>Structured output (JSON)</li>
-      </ul>
-    </div>
-    <div class="syl-card">
-      <div class="syl-head"><span>📚</span>RAG Systems</div>
-      <ul class="syl-list">
-        <li>RAG architecture &amp; pipelines</li>
-        <li>Chunking strategies (fixed, semantic)</li>
-        <li>Qdrant vector database</li>
-        <li>Metadata filtering &amp; reranking</li>
-        <li>Document parsing (PDF, MD, HTML)</li>
-      </ul>
-    </div>
-    <div class="syl-card">
-      <div class="syl-head"><span>🧠</span>Agents</div>
-      <ul class="syl-list">
-        <li>Perceive-decide-act loop</li>
-        <li>Tool design with JSON schemas</li>
-        <li>Multi-agent handoffs</li>
-        <li>Guardrails &amp; error recovery</li>
-        <li>CLI agent from scratch</li>
-      </ul>
-    </div>
-    <div class="syl-card">
-      <div class="syl-head"><span>🔁</span>Agentic Workflows</div>
-      <ul class="syl-list">
-        <li>Inngest for orchestration</li>
-        <li>Background document processing</li>
-        <li>Async AI job queues</li>
-        <li>Observability &amp; tracing</li>
-        <li>Failure handling &amp; retries</li>
-      </ul>
-    </div>
-    <div class="syl-card">
-      <div class="syl-head"><span>💾</span>Memory Layer</div>
-      <ul class="syl-list">
-        <li>Short vs long-term memory</li>
-        <li>Episodic &amp; semantic memory</li>
-        <li>Mem0 integration</li>
-        <li>Knowledge graphs with Neo4j</li>
-        <li>Memory write, update &amp; forget</li>
-      </ul>
-    </div>
-    <div class="syl-card">
-      <div class="syl-head"><span>🛠️</span>AI Projects</div>
-      <ul class="syl-list">
-        <li>Streaming ChatGPT clone</li>
-        <li>NotebookLM clone</li>
-        <li>AI-powered code reviewer</li>
-        <li>AutoWiki for Git repos</li>
-        <li>Build your own v0.dev</li>
-      </ul>
-    </div>
-    <div class="syl-card">
-      <div class="syl-head"><span>🔍</span>Vectorless Indexing</div>
-      <ul class="syl-list">
-        <li>Where vector RAG fails</li>
-        <li>LLM-generated wiki from docs</li>
-        <li>PageIndex retrieval</li>
-        <li>Hybrid vector + vectorless</li>
-        <li>Choosing the right strategy</li>
-      </ul>
+  <!-- GenAI Tab Content -->
+  <div class="syl-tab-content" id="genai">
+    <div class="phase-label t">GenAI Engineering Cohort</div>
+    <div class="syl-grid">
+      <div class="syl-card">
+        <div class="syl-head"><span>🤖</span>Foundation</div>
+        <ul class="syl-list">
+          <li>How transformers work internally</li>
+          <li>Tokenisation, embeddings</li>
+          <li>Context windows &amp; temperature</li>
+          <li>OpenAI, Claude, Gemini APIs</li>
+          <li>Local LLMs with Ollama</li>
+        </ul>
+      </div>
+      <div class="syl-card">
+        <div class="syl-head"><span>💬</span>Prompt Engineering</div>
+        <ul class="syl-list">
+          <li>Zero-shot &amp; few-shot prompting</li>
+          <li>Chain-of-thought (CoT)</li>
+          <li>ReAct prompting</li>
+          <li>Self-consistency technique</li>
+          <li>Structured output (JSON)</li>
+        </ul>
+      </div>
+      <div class="syl-card">
+        <div class="syl-head"><span>📚</span>RAG Systems</div>
+        <ul class="syl-list">
+          <li>RAG architecture &amp; pipelines</li>
+          <li>Chunking strategies (fixed, semantic)</li>
+          <li>Qdrant vector database</li>
+          <li>Metadata filtering &amp; reranking</li>
+          <li>Document parsing (PDF, MD, HTML)</li>
+        </ul>
+      </div>
+      <div class="syl-card">
+        <div class="syl-head"><span>🧠</span>Agents</div>
+        <ul class="syl-list">
+          <li>Perceive-decide-act loop</li>
+          <li>Tool design with JSON schemas</li>
+          <li>Multi-agent handoffs</li>
+          <li>Guardrails &amp; error recovery</li>
+          <li>CLI agent from scratch</li>
+        </ul>
+      </div>
+      <div class="syl-card">
+        <div class="syl-head"><span>🔁</span>Agentic Workflows</div>
+        <ul class="syl-list">
+          <li>Inngest for orchestration</li>
+          <li>Background document processing</li>
+          <li>Async AI job queues</li>
+          <li>Observability &amp; tracing</li>
+          <li>Failure handling &amp; retries</li>
+        </ul>
+      </div>
+      <div class="syl-card">
+        <div class="syl-head"><span>💾</span>Memory Layer</div>
+        <ul class="syl-list">
+          <li>Short vs long-term memory</li>
+          <li>Episodic &amp; semantic memory</li>
+          <li>Mem0 integration</li>
+          <li>Knowledge graphs with Neo4j</li>
+          <li>Memory write, update &amp; forget</li>
+        </ul>
+      </div>
+      <div class="syl-card">
+        <div class="syl-head"><span>🛠️</span>AI Projects</div>
+        <ul class="syl-list">
+          <li>Streaming ChatGPT clone</li>
+          <li>NotebookLM clone</li>
+          <li>AI-powered code reviewer</li>
+          <li>AutoWiki for Git repos</li>
+          <li>Build your own v0.dev</li>
+        </ul>
+      </div>
+      <div class="syl-card">
+        <div class="syl-head"><span>🔍</span>Vectorless Indexing</div>
+        <ul class="syl-list">
+          <li>Where vector RAG fails</li>
+          <li>LLM-generated wiki from docs</li>
+          <li>PageIndex retrieval</li>
+          <li>Hybrid vector + vectorless</li>
+          <li>Choosing the right strategy</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
@@ -514,21 +577,35 @@ footer strong{color:var(--muted2)}
 <hr class="div">
 
 <!-- FINAL CTA -->
-<div style="padding:5rem 2rem;text-align:center;max-width:660px;margin:0 auto">
-  <div class="section-tag" style="display:block;margin-bottom:0.75rem">Get started</div>
-  <h2 class="sh" style="margin-bottom:0.75rem">Your seniors cracked it.<br>Now it's your turn.</h2>
-  <p style="color:var(--muted2);font-size:0.95rem;margin-bottom:2rem;font-weight:300">Start with the free live session on 17th June — no cost, just the roadmap. Join the Telegram group to receive the link.</p>
-  <div class="btn-row" style="margin-bottom:1.25rem">
-    <a href="https://t.me/DsaAndWebd" class="btn btn-filled" target="_blank">DSA &amp; WebDev  Community</a>
+<div style="padding:6rem 2rem;text-align:center;max-width:700px;margin:0 auto;position:relative">
+  <div class="section-tag" style="display:block;margin-bottom:1rem">Get started</div>
+  <h2 class="sh" style="margin-bottom:1rem">Your seniors cracked it.<br>Now it's your turn.</h2>
+  <p style="color:var(--muted2);font-size:1.05rem;margin-bottom:2.5rem;font-weight:300">Start with the free live session on 17th June — no cost, just the roadmap. Join the Telegram group to receive the link.</p>
+  <div class="btn-row" style="margin-bottom:1.5rem">
+    <a href="https://t.me/DsaAndWebd" class="btn btn-filled" target="_blank">DSA &amp; WebDev Community</a>
     <a href="https://t.me/GenAiCohort" class="btn btn-filled green" target="_blank">GenAI Community</a>
   </div>
-  <p style="color:var(--muted);font-size:0.8rem">Free roadmap session · 17 June · Join Telegram for the link</p>
+  <p style="color:var(--muted);font-size:0.85rem">Free roadmap session · 17 June · Join Telegram for the link</p>
 </div>
 
 <footer>
   <strong>Campus to Career</strong> · Cohort 1 · Built by students, for students<br>
-  <span style="display:block;margin-top:5px">Ansh Agrawal &nbsp;·&nbsp; Vidhi Ajmera &nbsp;·&nbsp; Krishanveer Singh</span>
+  <span style="display:block;margin-top:8px">Ansh Agrawal &nbsp;·&nbsp; Vidhi Ajmera</span>
 </footer>
+
+<script>
+  // Interactive Syllabus Tabs
+  document.querySelectorAll('.syl-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.syl-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.syl-tab-content').forEach(c => c.classList.remove('active'));
+      
+      btn.classList.add('active');
+      const tabId = btn.getAttribute('data-tab');
+      document.getElementById(tabId).classList.add('active');
+    });
+  });
+</script>
 
 </body>
 </html>
