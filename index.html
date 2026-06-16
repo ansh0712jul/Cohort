@@ -22,6 +22,117 @@
   --muted2:#9D9BAA;
   --glow-v:rgba(124,110,247,0.15);
   --glow-t:rgba(0,200,150,0.15);
+
+  /* Abstracted UI Variables */
+  --nav-bg: rgba(7,7,12,0.8);
+  --btn-text: #fff;
+  --btn-green-text: #07070C;
+  --hero-h1-1: #FFFFFF;
+  --hero-h1-2: #B8B0FF;
+  --hero-h1-em-1: #9488FF;
+  --hero-h1-em-2: #6E5EE4;
+  --hero-h1-t2-1: #00FFC0;
+  --hero-h1-t2-2: #009E77;
+  --btn-filled-1: var(--violet);
+  --btn-filled-2: #6352EE;
+  --btn-filled-t-1: var(--teal);
+  --btn-filled-t-2: #00A279;
+  --btn-ghost-bg: rgba(255,255,255,0.02);
+  --btn-ghost-hover: rgba(255,255,255,0.06);
+  --btn-ghost-border: rgba(255,255,255,0.2);
+  --free-card-bg: rgba(15,15,23,0.45);
+  --ccard-shadow-hover: var(--ccard-shadow-hover);
+  --ccard-hover-border: rgba(255,255,255,0.15);
+  --ccard-top-v: #9F94FF;
+  --ccard-top-t: #58FFD4;
+  --price-v: #B0A7FF;
+  --mavatar-bg: #0F0F17;
+  --mdot-c: #E2634A;
+  --syl-tab-hover: rgba(255,255,255,0.04);
+  --syl-card-bg: rgba(15,15,23,0.4);
+  --syl-card-bg-hover: rgba(15,15,23,0.55);
+  --syl-card-border-hover: rgba(255,255,255,0.1);
+  --footer-bg: rgba(7,7,12,0.5);
+  --tg-link-bg: rgba(255,255,255,0.03);
+  --tg-link-hover-bg: rgba(255,255,255,0.06);
+  --tg-link-hover-border: rgba(255,255,255,0.15);
+}
+
+[data-theme="light"] {
+  --bg: #F5F5F7;
+  --surface: rgba(255,255,255,0.7);
+  --surface2: #FFFFFF;
+  --border: rgba(0,0,0,0.08);
+  --border2: rgba(0,0,0,0.15);
+  --violet: #5D4CE2;
+  --violet-soft: rgba(93, 76, 226, 0.1);
+  --teal: #008F6B;
+  --teal-soft: rgba(0, 143, 107, 0.1);
+  --text: #1D1D1F;
+  --muted: #86868B;
+  --muted2: #515154;
+  --glow-v: rgba(93, 76, 226, 0.15);
+  --glow-t: rgba(0, 143, 107, 0.15);
+
+  --nav-bg: rgba(245, 245, 247, 0.85);
+  --btn-text: #fff;
+  --btn-green-text: #fff;
+  --hero-h1-1: #1D1D1F;
+  --hero-h1-2: #5D4CE2;
+  --hero-h1-em-1: #4A3BB8;
+  --hero-h1-em-2: #332688;
+  --hero-h1-t2-1: #00A279;
+  --hero-h1-t2-2: #007054;
+  --btn-filled-1: #4A3BB8;
+  --btn-filled-2: #332688;
+  --btn-filled-t-1: #00A279;
+  --btn-filled-t-2: #007054;
+  --btn-ghost-bg: rgba(0,0,0,0.03);
+  --btn-ghost-hover: rgba(0,0,0,0.06);
+  --btn-ghost-border: rgba(0,0,0,0.15);
+  --free-card-bg: rgba(255,255,255,0.6);
+  --ccard-shadow-hover: rgba(0,0,0,0.05);
+  --ccard-hover-border: rgba(0,0,0,0.12);
+  --ccard-top-v: #7C6EF7;
+  --ccard-top-t: #00C896;
+  --price-v: #5D4CE2;
+  --mavatar-bg: #FFFFFF;
+  --mdot-c: #D14D35;
+  --syl-tab-hover: rgba(0,0,0,0.04);
+  --syl-card-bg: rgba(255,255,255,0.6);
+  --syl-card-bg-hover: rgba(255,255,255,0.8);
+  --syl-card-border-hover: rgba(0,0,0,0.1);
+  --footer-bg: rgba(245, 245, 247, 0.5);
+  --tg-link-bg: rgba(0,0,0,0.03);
+  --tg-link-hover-bg: rgba(0,0,0,0.06);
+  --tg-link-hover-border: rgba(0,0,0,0.15);
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.3s, transform 0.2s;
+  margin-left: 1rem;
+}
+.theme-toggle:hover {
+  background: var(--surface);
+  transform: scale(1.05);
+}
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+.theme-toggle .moon-icon { display: none; }
+.theme-toggle .sun-icon { display: block; }
+[data-theme="light"] .theme-toggle .moon-icon { display: block; }
+[data-theme="light"] .theme-toggle .sun-icon { display: none; }
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Satoshi',sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative}
@@ -35,47 +146,47 @@ body{background:var(--bg);color:var(--text);font-family:'Satoshi',sans-serif;fon
 .orb4{background:var(--teal);width:500px;height:500px;top:2200px;right:-100px}
 
 /* ── NAV ── */
-nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 3rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(7,7,12,0.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:100;transition:border-color 0.3s}
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 3rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:100;transition:border-color 0.3s}
 .nav-logo{font-family:'Clash Display',sans-serif;font-size:1.25rem;font-weight:600;letter-spacing:-0.01em;color:var(--text);display:flex;align-items:center;gap:4px;text-decoration:none}
 .nav-logo span{color:var(--violet)}
 .nav-links{display:flex;gap:2rem;list-style:none}
 .nav-links a{font-size:0.9rem;color:var(--muted2);text-decoration:none;transition:color 0.25s,transform 0.2s;display:inline-block}
 .nav-links a:hover{color:var(--text);transform:translateY(-1px)}
-.nav-cta{background:linear-gradient(135deg, var(--violet), #6352EE);color:#fff;padding:10px 22px;border-radius:10px;font-size:0.9rem;font-weight:500;text-decoration:none;transition:all 0.3s cubic-bezier(0.16,1,0.3,1);box-shadow:0 4px 15px rgba(124,110,247,0.25)}
+.nav-cta{background:linear-gradient(135deg, var(--btn-filled-1), var(--btn-filled-2));color:var(--btn-text);padding:10px 22px;border-radius:10px;font-size:0.9rem;font-weight:500;text-decoration:none;transition:all 0.3s cubic-bezier(0.16,1,0.3,1);box-shadow:0 4px 15px rgba(124,110,247,0.25)}
 .nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(124,110,247,0.4);opacity:0.95}
 
 /* ── HERO ── */
-.hero{padding:9rem 2rem 6rem;text-align:center;max-width:920px;margin:0 auto;position:relative}
+.hero{padding:5rem 2rem 6rem;text-align:center;max-width:920px;margin:0 auto;position:relative}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--violet-soft);border:1px solid rgba(124,110,247,0.2);border-radius:100px;padding:6px 16px;font-size:12px;color:#A89FFF;font-weight:500;margin-bottom:2.5rem;letter-spacing:0.06em;text-transform:uppercase;box-shadow:0 4px 12px rgba(124,110,247,0.1)}
 .pulse{width:8px;height:8px;background:var(--violet);border-radius:50%;animation:blink 2s ease-in-out infinite;box-shadow:0 0 8px var(--violet)}
 @keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.3;transform:scale(0.85)}}
-h1{font-family:'Clash Display',sans-serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.03em;margin-bottom:1.75rem;background:linear-gradient(135deg, #FFFFFF 20%, #B8B0FF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-h1 em{font-style:normal;background:linear-gradient(135deg, #9488FF 0%, #6E5EE4 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-h1 .t2{background:linear-gradient(135deg, #00FFC0 0%, #009E77 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+h1{font-family:'Clash Display',sans-serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.03em;margin-bottom:1.75rem;background:linear-gradient(135deg, var(--hero-h1-1) 20%, var(--hero-h1-2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+h1 em{font-style:normal;background:linear-gradient(135deg, var(--hero-h1-em-1) 0%, var(--hero-h1-em-2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+h1 .t2{background:linear-gradient(135deg, var(--hero-h1-t2-1) 0%, var(--hero-h1-t2-2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero-desc{font-size:1.2rem;color:var(--muted2);max-width:620px;margin:0 auto 3rem;font-weight:300;line-height:1.75}
 .hero-desc strong{color:var(--text);font-weight:500}
 
 .btn-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 .btn{display:inline-block;padding:14px 28px;border-radius:10px;font-size:0.95rem;font-weight:500;text-decoration:none;transition:all 0.3s cubic-bezier(0.16,1,0.3,1);font-family:'Satoshi',sans-serif;position:relative;overflow:hidden}
-.btn-filled{background:linear-gradient(135deg, var(--violet), #6352EE);color:#fff;box-shadow:0 4px 15px rgba(124,110,247,0.25)}
+.btn-filled{background:linear-gradient(135deg, var(--btn-filled-1), var(--btn-filled-2));color:var(--btn-text);box-shadow:0 4px 15px rgba(124,110,247,0.25)}
 .btn-filled:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(124,110,247,0.4)}
-.btn-filled.green{background:linear-gradient(135deg, var(--teal), #00A279);color:#07070C;box-shadow:0 4px 15px rgba(0,200,150,0.2)}
+.btn-filled.green{background:linear-gradient(135deg, var(--btn-filled-t-1), var(--btn-filled-t-2));color:var(--btn-green-text);box-shadow:0 4px 15px rgba(0,200,150,0.2)}
 .btn-filled.green:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,200,150,0.35)}
-.btn-ghost{border:1px solid var(--border2);color:var(--text);background:rgba(255,255,255,0.02);backdrop-filter:blur(8px)}
-.btn-ghost:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.2);transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--border2);color:var(--text);background:var(--btn-ghost-bg);backdrop-filter:blur(8px)}
+.btn-ghost:hover{background:var(--btn-ghost-hover);border-color:var(--btn-ghost-border);transform:translateY(-2px)}
 
 /* ── FREE EVENT ── */
 .free-section{padding:4rem 2rem;max-width:800px;margin:0 auto}
-.free-card{background:rgba(15,15,23,0.45);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(0,200,150,0.2);border-radius:24px;padding:3rem;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.4),0 0 30px rgba(0,200,150,0.05);transition:transform 0.3s,border-color 0.3s}
+.free-card{background:var(--free-card-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(0,200,150,0.2);border-radius:24px;padding:3rem;text-align:center;box-shadow:0 12px 40px var(--ccard-shadow-hover),0 0 30px rgba(0,200,150,0.05);transition:transform 0.3s,border-color 0.3s}
 .free-card:hover{transform:translateY(-3px);border-color:rgba(0,200,150,0.35)}
 .free-pill{display:inline-block;background:var(--teal-soft);color:var(--teal);border:1px solid rgba(0,200,150,0.15);border-radius:100px;padding:5px 16px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1.5rem}
 .free-card h2{font-family:'Clash Display',sans-serif;font-size:2rem;font-weight:600;margin-bottom:1rem;letter-spacing:-0.02em}
 .free-card p{color:var(--muted2);font-size:1rem;margin-bottom:1.75rem;max-width:550px;margin-left:auto;margin-right:auto}
 .free-date{font-family:'Clash Display',sans-serif;font-size:2.2rem;font-weight:700;color:var(--teal);margin-bottom:1.5rem;letter-spacing:-0.01em;text-shadow:0 0 15px rgba(0,200,150,0.2)}
 .tg-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-.tg-link{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:12px 20px;color:var(--text);text-decoration:none;font-size:14px;font-weight:500;transition:all 0.3s cubic-bezier(0.16,1,0.3,1)}
-.tg-link:hover{border-color:rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);transform:translateY(-2px)}
-.tg-dot{width:24px;height:24px;background:#2CA5E0;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0}
+.tg-link{display:inline-flex;align-items:center;gap:10px;background:var(--tg-link-bg);border:1px solid var(--border);border-radius:10px;padding:12px 20px;color:var(--text);text-decoration:none;font-size:14px;font-weight:500;transition:all 0.3s cubic-bezier(0.16,1,0.3,1)}
+.tg-link:hover{border-color:var(--tg-link-hover-border);background:var(--btn-ghost-hover);transform:translateY(-2px)}
+.tg-dot{width:24px;height:24px;background:#2CA5E0;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--btn-text);flex-shrink:0}
 
 /* ── SECTIONS ── */
 .section{padding:6rem 2rem;max-width:1120px;margin:0 auto}
@@ -88,17 +199,17 @@ hr.div{border:none;border-top:1px solid var(--border);max-width:1120px;margin:0 
 /* ── COHORT CARDS ── */
 .cohort-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
 .ccard{background:var(--surface);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:24px;padding:2.5rem;position:relative;overflow:hidden;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);box-shadow:0 12px 40px rgba(0,0,0,0.5)}
-.ccard:hover{border-color:rgba(255,255,255,0.15);transform:translateY(-6px)}
-.ccard.v:hover{box-shadow:0 15px 35px var(--glow-v),0 5px 15px rgba(0,0,0,0.4)}
-.ccard.t:hover{box-shadow:0 15px 35px var(--glow-t),0 5px 15px rgba(0,0,0,0.4)}
+.ccard:hover{border-color:var(--tg-link-hover-border);transform:translateY(-6px)}
+.ccard.v:hover{box-shadow:0 15px 35px var(--glow-v),0 5px 15px var(--ccard-shadow-hover)}
+.ccard.t:hover{box-shadow:0 15px 35px var(--glow-t),0 5px 15px var(--ccard-shadow-hover)}
 .ccard-top{height:4px;width:100%;position:absolute;top:0;left:0}
-.ccard.v .ccard-top{background:linear-gradient(90deg, var(--violet), #9F94FF)}
-.ccard.t .ccard-top{background:linear-gradient(90deg, var(--teal), #58FFD4)}
+.ccard.v .ccard-top{background:linear-gradient(90deg, var(--violet), var(--ccard-top-v))}
+.ccard.t .ccard-top{background:linear-gradient(90deg, var(--teal), var(--ccard-top-t))}
 .ccard h3{font-family:'Clash Display',sans-serif;font-size:1.4rem;font-weight:600;margin-bottom:0.5rem;letter-spacing:-0.01em}
 .ccard .desc{color:var(--muted2);font-size:0.92rem;margin-bottom:2rem;line-height:1.6}
 .price{font-family:'Clash Display',sans-serif;font-size:2.8rem;font-weight:700;line-height:1;margin-bottom:0.5rem;letter-spacing:-0.01em}
 .price.tba{font-size:1.8rem;margin:0.5rem 0 0.8rem}
-.ccard.v .price{color:#B0A7FF;text-shadow:0 0 20px rgba(124,110,247,0.15)}
+.ccard.v .price{color:var(--price-v);text-shadow:0 0 20px rgba(124,110,247,0.15)}
 .ccard.t .price{color:var(--teal);text-shadow:0 0 20px rgba(0,200,150,0.15)}
 .per{font-size:0.85rem;color:var(--muted);margin-bottom:2rem}
 .features{list-style:none}
@@ -108,17 +219,17 @@ hr.div{border:none;border-top:1px solid var(--border);max-width:1120px;margin:0 
 .ccard.v .check-icon{color:var(--violet)}
 .ccard.t .check-icon{color:var(--teal)}
 .ccard-btn{display:block;text-align:center;margin-top:2rem;padding:14px;border-radius:12px;font-size:0.92rem;font-weight:600;text-decoration:none;transition:all 0.3s ease;border:1px solid transparent}
-.ccard.v .ccard-btn{background:var(--violet-soft);color:#B8B0FF;border-color:rgba(124,110,247,0.1)}
-.ccard.v .ccard-btn:hover{background:var(--violet);color:#fff;box-shadow:0 6px 20px rgba(124,110,247,0.3)}
+.ccard.v .ccard-btn{background:var(--violet-soft);color:var(--hero-eyebrow-text);border-color:rgba(124,110,247,0.1)}
+.ccard.v .ccard-btn:hover{background:var(--violet);color:var(--btn-text);box-shadow:0 6px 20px rgba(124,110,247,0.3)}
 .ccard.t .ccard-btn{background:var(--teal-soft);color:var(--teal);border-color:rgba(0,200,150,0.1)}
-.ccard.t .ccard-btn:hover{background:var(--teal);color:#07070C;box-shadow:0 6px 20px rgba(0,200,150,0.3)}
+.ccard.t .ccard-btn:hover{background:var(--teal);color:var(--btn-green-text);box-shadow:0 6px 20px rgba(0,200,150,0.3)}
 
 /* ── MENTORS ── */
 .mentor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2.5rem;max-width:880px;margin:0 auto}
 .mcard{background:var(--surface);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:24px;padding:2.5rem;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);box-shadow:0 12px 40px rgba(0,0,0,0.5);display:flex;flex-direction:column}
-.mcard:hover{border-color:rgba(255,255,255,0.15);transform:translateY(-6px);box-shadow:0 15px 35px rgba(124,110,247,0.12)}
+.mcard:hover{border-color:var(--tg-link-hover-border);transform:translateY(-6px);box-shadow:0 15px 35px rgba(124,110,247,0.12)}
 .mavatar-container{width:90px;height:90px;border-radius:50%;margin-bottom:1.5rem;position:relative;padding:4px;background:linear-gradient(135deg, var(--violet), var(--teal));box-shadow:0 8px 24px rgba(124,110,247,0.25)}
-.mavatar-img{width:100%;height:100%;object-fit:cover;border-radius:50%;background:#0F0F17}
+.mavatar-img{width:100%;height:100%;object-fit:cover;border-radius:50%;background:var(--mavatar-bg)}
 .mname{font-family:'Clash Display',sans-serif;font-size:1.25rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:4px}
 .mrole{font-size:0.88rem;color:var(--teal);font-weight:500;margin-bottom:1.5rem;letter-spacing:0.01em}
 .mstory{list-style:none;margin-bottom:1.5rem;flex-grow:1}
@@ -127,18 +238,18 @@ hr.div{border:none;border-top:1px solid var(--border);max-width:1120px;margin:0 
 .mdot{width:8px;height:8px;border-radius:50%;margin-top:6px;flex-shrink:0;box-shadow:0 0 6px currentColor}
 .mdot.v{background:var(--violet);color:var(--violet)}
 .mdot.t{background:var(--teal);color:var(--teal)}
-.mdot.c{background:#E2634A;color:#E2634A}
+.mdot.c{background:var(--mdot-c);color:var(--mdot-c)}
 .mco{font-weight:600;color:var(--text);display:block;line-height:1.35;margin-bottom:2px}
 .mdet{color:var(--muted2);display:block;line-height:1.4}
 .mtags{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.25rem}
-.mtag{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:4px 12px;font-size:12px;font-weight:500;color:var(--muted2);transition:all 0.2s}
-.mtag.v{background:var(--violet-soft);color:#B0A7FF;border-color:rgba(124,110,247,0.15)}
+.mtag{background:var(--tg-link-bg);border:1px solid var(--border);border-radius:8px;padding:4px 12px;font-size:12px;font-weight:500;color:var(--muted2);transition:all 0.2s}
+.mtag.v{background:var(--violet-soft);color:var(--price-v);border-color:rgba(124,110,247,0.15)}
 .mtag.t{background:var(--teal-soft);color:var(--teal);border-color:rgba(0,200,150,0.15)}
 
 /* ── INTERACTIVE SYLLABUS TABS ── */
-.syllabus-tabs{display:flex;justify-content:center;gap:0.75rem;margin-bottom:3.5rem;background:rgba(255,255,255,0.02);padding:6px;border-radius:100px;border:1px solid var(--border);width:max-content;margin-left:auto;margin-right:auto;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+.syllabus-tabs{display:flex;justify-content:center;gap:0.75rem;margin-bottom:3.5rem;background:var(--btn-ghost-bg);padding:6px;border-radius:100px;border:1px solid var(--border);width:max-content;margin-left:auto;margin-right:auto;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
 .syl-tab-btn{background:transparent;border:none;color:var(--muted2);padding:12px 28px;border-radius:100px;font-family:'Clash Display',sans-serif;font-size:0.95rem;font-weight:500;cursor:pointer;transition:all 0.3s cubic-bezier(0.16,1,0.3,1)}
-.syl-tab-btn.active{background:linear-gradient(135deg, var(--violet), #6352EE);color:#fff;box-shadow:0 4px 15px rgba(124,110,247,0.3)}
+.syl-tab-btn.active{background:linear-gradient(135deg, var(--btn-filled-1), var(--btn-filled-2));color:var(--btn-text);box-shadow:0 4px 15px rgba(124,110,247,0.3)}
 .syl-tab-btn:hover:not(.active){color:var(--text);background:rgba(255,255,255,0.04)}
 .syl-tab-content{display:none;animation:tabFadeIn 0.5s cubic-bezier(0.16,1,0.3,1) forwards}
 .syl-tab-content.active{display:block}
@@ -146,26 +257,26 @@ hr.div{border:none;border-top:1px solid var(--border);max-width:1120px;margin:0 
 
 /* ── SYLLABUS CARDS ── */
 .syl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
-.syl-card{background:rgba(15,15,23,0.4);border:1px solid var(--border);border-radius:18px;padding:1.5rem;transition:all 0.3s ease}
-.syl-card:hover{border-color:rgba(255,255,255,0.1);transform:translateY(-2px);background:rgba(15,15,23,0.55)}
+.syl-card{background:var(--syl-card-bg);border:1px solid var(--border);border-radius:18px;padding:1.5rem;transition:all 0.3s ease}
+.syl-card:hover{border-color:var(--syl-card-border-hover);transform:translateY(-2px);background:var(--syl-card-bg-hover)}
 .syl-head{font-size:0.95rem;font-weight:600;margin-bottom:1rem;color:var(--text);display:flex;align-items:center;gap:10px}
 .syl-head span{font-size:18px}
 .syl-list{list-style:none}
-.syl-list li{font-size:0.82rem;color:var(--muted2);padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.03)}
+.syl-list li{font-size:0.82rem;color:var(--muted2);padding:5px 0;border-bottom:1px solid var(--border)}
 .syl-list li:last-child{border-bottom:none}
 .phase-label{display:inline-block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;padding:6px 14px;border-radius:8px;margin-bottom:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
-.phase-label.v{background:var(--violet-soft);color:#B0A7FF;border:1px solid rgba(124,110,247,0.15)}
+.phase-label.v{background:var(--violet-soft);color:var(--price-v);border:1px solid rgba(124,110,247,0.15)}
 .phase-label.t{background:var(--teal-soft);color:var(--teal);border:1px solid rgba(0,200,150,0.15)}
 
 /* ── FOOTER ── */
-footer{border-top:1px solid var(--border);padding:3.5rem 2rem;text-align:center;color:var(--muted);font-size:0.88rem;background:rgba(7,7,12,0.5)}
+footer{border-top:1px solid var(--border);padding:3.5rem 2rem;text-align:center;color:var(--muted);font-size:0.88rem;background:var(--footer-bg)}
 footer strong{color:var(--muted2)}
 
 @media(max-width:768px){
   nav{padding:1.25rem 1.5rem}
   nav .nav-links{display:none}
   h1{font-size:2.6rem}
-  .hero{padding:7rem 1.25rem 4rem}
+  .hero{padding:4rem 1.25rem 4rem}
   .free-card{padding:2rem 1.25rem}
   .syllabus-tabs{width:90%;flex-direction:column;border-radius:18px;gap:4px}
   .syl-tab-btn{width:100%;padding:10px 16px}
@@ -188,7 +299,13 @@ footer strong{color:var(--muted2)}
     <li><a href="#mentors">Mentors</a></li>
     <li><a href="#syllabus">Syllabus</a></li>
   </ul>
-  <a href="https://t.me/DsaAndWebd" class="nav-cta" target="_blank">Join Now</a>
+  <div style="display:flex;align-items:center;">
+    <a href="https://discord.gg/Cfej9fmRp" class="nav-cta" target="_blank">Join Now</a>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+      <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -197,8 +314,8 @@ footer strong{color:var(--muted2)}
   <h1>From Campus<br>to <em>Internship</em> &amp;<br><span class="t2">FTE Ready</span></h1>
   <p class="hero-desc">Learn DSA, Web Development &amp; GenAI from <strong>seniors who've already cracked it</strong> — Goldman Sachs, Guidewire, Oxane. Real roadmap. No fluff.</p>
   <div class="btn-row">
-    <a href="https://t.me/DsaAndWebd" class="btn btn-filled" target="_blank">Join DSA &amp; WebDev Community</a>
-    <a href="https://t.me/GenAiCohort" class="btn btn-filled green" target="_blank">Join GenAI Community</a>
+    <a href="https://discord.gg/Cfej9fmRp" class="btn btn-filled" target="_blank">Join DSA &amp; WebDev Community</a>
+    <a href="https://discord.gg/pFvXruvah" class="btn btn-filled green" target="_blank">Join GenAI Community</a>
   </div>
 </div>
 
@@ -207,15 +324,15 @@ footer strong{color:var(--muted2)}
   <div class="free-card">
     <div class="free-pill">100% Free</div>
     <h2>Live Roadmap Session</h2>
-    <p>Join us for a free live session — complete roadmap walkthrough, what to learn, in what order, and how to get your first internship. No commitment needed.</p>
-    <div class="free-date">17 June 2025</div>
-    <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1.5rem">Join the Telegram group to get the session link</p>
+    <p>Join us for a free live orientation session this Sunday, 21st June — complete roadmap walkthrough. Classes will start from 1st July.</p>
+    <div class="free-date">21 June 2025</div>
+    <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1.5rem">Join the Discord server to get the session link</p>
     <div class="tg-row">
-      <a href="https://t.me/DsaAndWebd" class="tg-link" target="_blank">
-        <span class="tg-dot">T</span> DSA &amp; WebDev Group
+      <a href="https://discord.gg/Cfej9fmRp" class="tg-link" target="_blank">
+        <span class="tg-dot">D</span> DSA &amp; WebDev Group
       </a>
-      <a href="https://t.me/GenAiCohort" class="tg-link" target="_blank">
-        <span class="tg-dot">T</span> GenAI Group
+      <a href="https://discord.gg/pFvXruvah" class="tg-link" target="_blank">
+        <span class="tg-dot">D</span> GenAI Group
       </a>
     </div>
   </div>
@@ -262,10 +379,10 @@ footer strong{color:var(--muted2)}
         </li>
         <li>
           <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span>Private Telegram community</span>
+          <span>Private Discord community</span>
         </li>
       </ul>
-      <a href="https://t.me/DsaAndWebd" class="ccard-btn" target="_blank">Join DSA &amp; WebDev →</a>
+      <a href="https://discord.gg/Cfej9fmRp" class="ccard-btn" target="_blank">Join DSA &amp; WebDev →</a>
     </div>
     <div class="ccard t">
       <div class="ccard-top"></div>
@@ -300,10 +417,10 @@ footer strong{color:var(--muted2)}
         </li>
         <li>
           <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span>Private Telegram community</span>
+          <span>Private Discord community</span>
         </li>
       </ul>
-      <a href="https://t.me/GenAiCohort" class="ccard-btn" target="_blank">Join GenAI Cohort →</a>
+      <a href="https://discord.gg/pFvXruvah" class="ccard-btn" target="_blank">Join GenAI Cohort →</a>
     </div>
   </div>
 </div>
@@ -580,12 +697,12 @@ footer strong{color:var(--muted2)}
 <div style="padding:6rem 2rem;text-align:center;max-width:700px;margin:0 auto;position:relative">
   <div class="section-tag" style="display:block;margin-bottom:1rem">Get started</div>
   <h2 class="sh" style="margin-bottom:1rem">Your seniors cracked it.<br>Now it's your turn.</h2>
-  <p style="color:var(--muted2);font-size:1.05rem;margin-bottom:2.5rem;font-weight:300">Start with the free live session on 17th June — no cost, just the roadmap. Join the Telegram group to receive the link.</p>
+  <p style="color:var(--muted2);font-size:1.05rem;margin-bottom:2.5rem;font-weight:300">Start with the free orientation session this Sunday, 21st June — classes start 1st July. Join the Discord server to receive the link.</p>
   <div class="btn-row" style="margin-bottom:1.5rem">
-    <a href="https://t.me/DsaAndWebd" class="btn btn-filled" target="_blank">DSA &amp; WebDev Community</a>
-    <a href="https://t.me/GenAiCohort" class="btn btn-filled green" target="_blank">GenAI Community</a>
+    <a href="https://discord.gg/Cfej9fmRp" class="btn btn-filled" target="_blank">DSA &amp; WebDev Community</a>
+    <a href="https://discord.gg/pFvXruvah" class="btn btn-filled green" target="_blank">GenAI Community</a>
   </div>
-  <p style="color:var(--muted);font-size:0.85rem">Free roadmap session · 17 June · Join Telegram for the link</p>
+  <p style="color:var(--muted);font-size:0.85rem">Orientation: 21 June · Classes start: 1 July · Join Discord for the link</p>
 </div>
 
 <footer>
@@ -594,6 +711,26 @@ footer strong{color:var(--muted2)}
 </footer>
 
 <script>
+  // Theme Toggle Logic
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const currentTheme = localStorage.getItem('theme');
+  
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+  }
+  
+  themeToggleBtn.addEventListener('click', () => {
+    let theme = document.documentElement.getAttribute('data-theme');
+    if (theme === 'light') {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    }
+  });
+
+
   // Interactive Syllabus Tabs
   document.querySelectorAll('.syl-tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
